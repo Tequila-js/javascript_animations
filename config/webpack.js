@@ -2,9 +2,7 @@ import path from 'path';
 import webpack from 'webpack';
 
 function config (env = 'development') {
-  let [config, plugins] = [{}, []];
-
-  plugins = [new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.js')];
+  let [config, plugins] = [{}, [new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.[hash].js')]];
 
   if (env === 'production') {
     let webpackEnv, uglify;
@@ -28,7 +26,7 @@ function config (env = 'development') {
     entry: path.join(process.cwd(), '/app/js/main.js'),
     output: {
       path: path.join(process.cwd(), '/dist/js'),
-      filename: env === 'production' ? '[name].min.js' : '[name].js',
+      filename: env === 'production' ? '[name].[hash].min.js' : '[name].[hash].js',
     },
     devtool: env === 'production' ? 'cheap-source-map' : 'source-map',
     plugins,
