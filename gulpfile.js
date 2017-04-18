@@ -3,8 +3,11 @@ import path from 'path';
 
 import {argv} from 'yargs';
 import gulp from 'gulp';
+import hash from 'gulp-hash';
 import sass from 'gulp-sass';
+import concat from 'gulp-concat';
 import rename from 'gulp-rename';
+import sourcemaps from 'gulp-sourcemaps';
 import gulpIf from 'gulp-if';
 import plumber from 'gulp-plumber';
 import minifycss from 'gulp-minify-css';
@@ -38,8 +41,61 @@ console.log(`${colors.blue}%s${colors.reset}`, `environmemt: ${env}`);
   });
 });
 
+function removeContent(path = '', extension = '') {
+  fs.readdirSync(path).forEach((file, index) => {
+    if (file.indexOf(extension) !== -1) {
+      fs.unlinkSync(`${path}/${file}`);
+    }
+  })
+}
+
+function removeJS(done) {
+  removeContent(path.join(`${__dirname}/dist/js`), '.js');
+  done();
+}
+
+function removeCSS(done) {
+  removeContent(path.join(`${__dirname}/dist/css`), '.css');
+  done();
+}
+
+function generateCSSVendor(done) {
+  gulp.src(['./node_modules/reveal/index.css'])
+    .pipe(concat('vendor.css'))
+    .pipe(hash())
+    .pipe(gulp.dest('./dist/css'))
+    .pipe(rename({suffix: '.min'}))
+    .pipe(minifycss())
+    .pipe(gulp.dest('./dist/css'));
+
+  done();
+}
+
+function generateCSS(done) {
+  gulp.src('./app/scss/*scss')
+    .pipe(plumber())
+    .pipe(hash())
+    .pipe(gulpIf(env === 'development', sourcemaps.init()))
+    .pipe(sass({
+      style: 'nested',
+      noCache: true
+    }))
+    .pipe(autoprefixer({
+      browsers: ['last 2 versions'],
+      cascade: true
+    }))
+    .pipe(gulpIf(env === 'development', sourcemaps.write('.')))
+    .pipe(gulp.dest('./dist/css'))
+    .pipe(rename({suffix: '.min'}))
+    .pipe(minifycss())
+    .pipe(gulp.dest('./dist/css'))
+    .pipe(gulpIf(reload, livereload()));
+
+  done();
+}
+
 function generateJS(done) {
-  gulp.src('./app/js/*.js') 
+  gulp.src('./app/js/*.js')
     .pipe(plumber())
     .pipe(webpack(jsConfig))
     .pipe(gulp.dest('./dist/js'))
@@ -48,9 +104,9 @@ function generateJS(done) {
   done();
 }
 
-
 gulp.task('watch', function () {
   livereload.listen();
 
-  gulp.watch(['./app/js/*.js'], gulp.parallel(generateJS), done => done());
+  gulp.watch(['./app/js/*.js'], gulp.series(removeJS, generateJS), done => done());
+  gulp.watch(['./app/scss/*.scss', './app/scss/**/*.scss'], gulp.series(removeCSS, generateCSSVendor, generateCSS), done => done());
 });
