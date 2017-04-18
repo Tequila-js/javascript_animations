@@ -3,10 +3,9 @@ import path from 'path';
 
 import {argv} from 'yargs';
 import gulp from 'gulp';
-import hash from 'gulp-hash';
 import sass from 'gulp-sass';
 import concat from 'gulp-concat';
-import rename from 'gulp-rename';
+import htmlmin from 'gulp-html-minifier';
 import sourcemaps from 'gulp-sourcemaps';
 import gulpIf from 'gulp-if';
 import plumber from 'gulp-plumber';
@@ -26,7 +25,7 @@ const [reload, env, current] = [argv.reload == 'true', argv.env === 'production'
   };
 
 console.log(`${colors.blue}%s${colors.reset}`, `livereload active: ${reload? 'ON' : 'OFF'}`);
-console.log(`${colors.blue}%s${colors.reset}`, `environmemt: ${env}`);
+console.log(`${colors.blue}%s${colors.reset}`, `environment: ${env}`);
 
 ['dist/js', 'dist/css'].forEach(function checkIfCriticalRouteExist(item) {
   let [routeFolders, route] = [item.split('/'), __dirname];
@@ -41,31 +40,10 @@ console.log(`${colors.blue}%s${colors.reset}`, `environmemt: ${env}`);
   });
 });
 
-function removeContent(path = '', extension = '') {
-  fs.readdirSync(path).forEach((file, index) => {
-    if (file.indexOf(extension) !== -1) {
-      fs.unlinkSync(`${path}/${file}`);
-    }
-  })
-}
-
-function removeJS(done) {
-  removeContent(path.join(`${__dirname}/dist/js`), '.js');
-  done();
-}
-
-function removeCSS(done) {
-  removeContent(path.join(`${__dirname}/dist/css`), '.css');
-  done();
-}
-
 function generateCSSVendor(done) {
   gulp.src(['./node_modules/reveal/index.css'])
     .pipe(concat('vendor.css'))
-    .pipe(hash())
-    .pipe(gulp.dest('./dist/css'))
-    .pipe(rename({suffix: '.min'}))
-    .pipe(minifycss())
+    .pipe(gulpIf(env != 'development', minifycss()))
     .pipe(gulp.dest('./dist/css'));
 
   done();
@@ -74,7 +52,6 @@ function generateCSSVendor(done) {
 function generateCSS(done) {
   gulp.src('./app/scss/*scss')
     .pipe(plumber())
-    .pipe(hash())
     .pipe(gulpIf(env === 'development', sourcemaps.init()))
     .pipe(sass({
       style: 'nested',
@@ -85,9 +62,7 @@ function generateCSS(done) {
       cascade: true
     }))
     .pipe(gulpIf(env === 'development', sourcemaps.write('.')))
-    .pipe(gulp.dest('./dist/css'))
-    .pipe(rename({suffix: '.min'}))
-    .pipe(minifycss())
+    .pipe(gulpIf(env != 'development', minifycss()))
     .pipe(gulp.dest('./dist/css'))
     .pipe(gulpIf(reload, livereload()));
 
@@ -104,9 +79,19 @@ function generateJS(done) {
   done();
 }
 
+function minifyHTML(done) {
+  gulp.src('./app/html/*.html')
+  .pipe(htmlmin({collapseWhitespace: true, collapseInlineTagWhitespace: true, ignoreCustomFragments: [/<!--[\s\S]-->/]}))
+  .pipe(gulp.dest('./dist'))
+  .pipe(gulpIf(reload, livereload()));
+  
+  done();
+}
+
 gulp.task('watch', function () {
   livereload.listen();
 
-  gulp.watch(['./app/js/*.js'], gulp.series(removeJS, generateJS), done => done());
-  gulp.watch(['./app/scss/*.scss', './app/scss/**/*.scss'], gulp.series(removeCSS, generateCSSVendor, generateCSS), done => done());
+  gulp.watch(['./app/js/*.js'], gulp.series(generateJS), done => done());
+  gulp.watch(['./app/scss/*.scss', './app/scss/**/*.scss'], gulp.series(generateCSSVendor, generateCSS), done => done());
+  gulp.watch(['./app/html/*.html'], gulp.series(minifyHTML), done => done());
 });
