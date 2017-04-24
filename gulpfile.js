@@ -4,6 +4,7 @@ import path from 'path';
 import {argv} from 'yargs';
 import gulp from 'gulp';
 import sass from 'gulp-sass';
+import clean from 'gulp-clean';
 import concat from 'gulp-concat';
 import htmlmin from 'gulp-html-minifier';
 import sourcemaps from 'gulp-sourcemaps';
@@ -43,7 +44,7 @@ console.log(`${colors.blue}%s${colors.reset}`, `environment: ${env}`);
 function generateCSSVendor(done) {
   gulp.src(['./node_modules/reveal/index.css'])
     .pipe(concat('vendor.css'))
-    .pipe(gulpIf(env != 'development', minifycss()))
+    .pipe(gulpIf(env === 'production', minifycss()))
     .pipe(gulp.dest('./dist/css'));
 
   done();
@@ -84,7 +85,14 @@ function minifyHTML(done) {
   .pipe(htmlmin({collapseWhitespace: true, collapseInlineTagWhitespace: true, ignoreCustomFragments: [/<!--[\s\S]-->/]}))
   .pipe(gulp.dest('./dist'))
   .pipe(gulpIf(reload, livereload()));
-  
+
+  done();
+}
+
+function cleanAssets(done) {
+  gulp.src(['./dist/css/*.css', './dist/css/*.map', './dist/js/*.js', './dist/js/*.map'])
+    .pipe(clean());
+
   done();
 }
 
@@ -95,3 +103,6 @@ gulp.task('watch', function () {
   gulp.watch(['./app/scss/*.scss', './app/scss/**/*.scss'], gulp.series(generateCSSVendor, generateCSS), done => done());
   gulp.watch(['./app/html/*.html'], gulp.series(minifyHTML), done => done());
 });
+
+
+gulp.task('build', gulp.series(cleanAssets, generateCSSVendor, generateCSS, generateJS, minifyHTML, done => done()));
