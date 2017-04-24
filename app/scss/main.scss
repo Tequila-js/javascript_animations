@@ -1,3 +1,28 @@
+@import 'vars';
+
 body {
   background: white;
-}        
+  font-family: 'Roboto', 'Helvetica';
+}
+
+.controls {
+  div {
+    opacity: 1 !important;
+    cursor: pointer;
+    transition: $transition-time border-color ease;
+  }
+  .navigate-left {
+    border-right-color: $gray !important; 
+    &:hover,
+    &:active {
+      border-right-color: $blue !important;
+    }
+  }
+  .navigate-right {
+    border-left-color: $gray !important; 
+    &:hover,
+    &:active {
+      border-left-color: $blue !important;
+    }
+  }
+}

@@ -1,5 +1,7 @@
 import $ from 'jquery';
 import reveal from 'reveal'; 
 
-$(document).ready(() => console.log('testing'));     
-   
+(function ready(window, document) { 
+  reveal.initialize();
+  console.log('testing')
+})(window, document); 
