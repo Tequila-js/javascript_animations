@@ -51,6 +51,7 @@
     "gulp-webpack": "^1.5.0"
   },
   "dependencies": {
+    "animejs": "^2.0.2",
     "jquery": "^3.2.1",
     "reveal": "0.0.4"
   }
