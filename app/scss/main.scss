@@ -5,6 +5,29 @@ body {
   font-family: 'Roboto', 'Helvetica';
 }
 
+h1, h2, h3, h4, h5, h6 {
+  color: $blue;
+  font-weight: bold;
+  text-align: left;
+  text-shadow: 3px 4px 9px rgba(0, 0, 0, .5);
+}
+
+.container {
+  &:after,
+  &:before {
+    clear: both;
+    display: table;
+  }
+}
+
+.column {
+  float: left;
+}
+
+.s-12 {
+  width: 50%;
+}
+
 .controls {
   div {
     opacity: 1 !important;
@@ -25,4 +48,12 @@ body {
       border-left-color: $blue !important;
     }
   }
+}
+
+/* Title */
+.title span {
+  position: relative;
+  display: inline-block;
+  opacity: 0;
+  transform: translateX(0px);
 }
