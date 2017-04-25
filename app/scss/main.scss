@@ -1,5 +1,9 @@
 @import 'vars';
 
+@function calculaWidthPercentage($i, $column-number) {
+  @return percentage($i/$column-number);
+}
+
 body {
   background: white;
   font-family: 'Roboto', 'Helvetica';
@@ -15,17 +19,33 @@ h1, h2, h3, h4, h5, h6 {
 .container {
   &:after,
   &:before {
+    content: '';
     clear: both;
     display: table;
   }
 }
 
-.column {
-  float: left;
+.text-center {
+  text-align: center;
 }
 
-.s-12 {
-  width: 50%;
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.column {
+  float: left;
+  padding: $gutter;
+}
+
+@for $i from 1 through $column-number {
+  .s-#{$i} {
+    width: calculaWidthPercentage($i, $column-number);
+  }
 }
 
 .controls {
@@ -35,14 +55,14 @@ h1, h2, h3, h4, h5, h6 {
     transition: $transition-time border-color ease;
   }
   .navigate-left {
-    border-right-color: $gray !important; 
+    border-right-color: $gray !important;
     &:hover,
     &:active {
       border-right-color: $blue !important;
     }
   }
   .navigate-right {
-    border-left-color: $gray !important; 
+    border-left-color: $gray !important;
     &:hover,
     &:active {
       border-left-color: $blue !important;
@@ -50,10 +70,17 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-/* Title */
-.title span {
-  position: relative;
-  display: inline-block;
-  opacity: 0;
-  transform: translateX(0px);
+.slides {
+  .title span {
+    position: relative;
+    display: inline-block;
+    opacity: 0;
+    transform: translateX(0);
+  }
+
+  .content {
+    opacity: 0;
+    transform: translateX(-100%);
+    text-align: left;
+  }
 }
