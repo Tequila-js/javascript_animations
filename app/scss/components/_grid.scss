@@ -1,0 +1,15 @@
+.container {
+  &:after,
+  &:before {
+    content: '';
+    clear: both;
+    display: table;
+  }
+}
+
+.column {
+  float: left;
+  padding: $gutter;
+}
+
+@include createGrid();

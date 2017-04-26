@@ -1,0 +1,14 @@
+.slides {
+  .title span {
+    position: relative;
+    display: inline-block;
+    opacity: 0;
+    transform: translateX(0);
+  }
+
+  .content {
+    opacity: 0;
+    transform: translateX(-100%);
+    text-align: left;
+  }
+}

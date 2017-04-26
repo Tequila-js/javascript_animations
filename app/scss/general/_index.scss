@@ -1,0 +1,23 @@
+body {
+  background: white;
+  font-family: 'Roboto', 'Helvetica';
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: $blue;
+  font-weight: bold;
+  text-align: left;
+  text-shadow: 0 4px 9px rgba(0, 0, 0, .5);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}

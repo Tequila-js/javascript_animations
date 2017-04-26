@@ -1,0 +1,7 @@
+@mixin createGrid() {
+  @for $i from 1 through $column-number {
+    .s-#{$i} {
+      width: calculaWidthPercentage($i, $column-number);
+    }
+  }
+}
