@@ -8,9 +8,10 @@
     "npm": "3.8.x"
   },
   "scripts": {
-    "watch": "babel-node --presets es2015 ./node_modules/gulp/bin/gulp.js watch --reload=true",
-    "build:dev": "babel-node --presets es2015 ./node_modules/gulp/bin/gulp.js build --env=development",
-    "build:prod": "babel-node --presets es2015 ./node_modules/gulp/bin/gulp.js build --env=production",
+    "test-structure": "babel-node --presets es2015 scripts/test-folders",
+    "watch": "npm run build:dev && babel-node --presets es2015 ./node_modules/gulp/bin/gulp.js watch --reload=true",
+    "build:dev": "npm run test-structure && babel-node --presets es2015 ./node_modules/gulp/bin/gulp.js build --env=development",
+    "build:prod": "npm run test-structure && babel-node --presets es2015 ./node_modules/gulp/bin/gulp.js build --env=production",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

@@ -28,19 +28,6 @@ const [reload, env, current] = [argv.reload == 'true', argv.env === 'production'
 console.log(`${colors.blue}%s${colors.reset}`, `livereload active: ${reload? 'ON' : 'OFF'}`);
 console.log(`${colors.blue}%s${colors.reset}`, `environment: ${env}`);
 
-['dist/js', 'dist/css'].forEach(function checkIfCriticalRouteExist(item) {
-  let [routeFolders, route] = [item.split('/'), __dirname];
-
-  routeFolders.forEach(function generateFolder(folder) {
-    route += `${path.sep}${folder}`;
-
-    if (!fs.existsSync(route)) {
-      fs.mkdirSync(route);
-      console.log(`${colors.green}%s${colors.reset}`, `Created: ${route}`);
-    }
-  });
-});
-
 function generateCSSVendor(done) {
   gulp.src(['./node_modules/reveal/index.css'])
     .pipe(concat('vendor.css'))
@@ -97,6 +84,17 @@ function cleanAssets(done) {
 }
 
 gulp.task('watch', function () {
+  let open = require('open'),
+      connect = require('connect'),
+      serveStatic = require('serve-static');
+
+  connect()
+    .use(serveStatic(path.resolve(`${__dirname}/dist`)))
+    .listen(8080, () => {
+      console.log(`${colors.blue}%s${colors.reset}`, `Running on: localhost:8080`);
+      open('http://localhost:8080');
+    });
+
   livereload.listen();
 
   gulp.watch(['./app/js/*.js'], gulp.series(generateJS), done => done());
