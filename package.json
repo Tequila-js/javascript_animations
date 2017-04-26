@@ -8,10 +8,12 @@
     "npm": "3.8.x"
   },
   "scripts": {
+    "scaffolding": "npm run test-structure && npm run move-assets",
     "test-structure": "babel-node --presets es2015 scripts/test-folders",
+    "move-assets": "babel-node --presets es2015 scripts/move-assets",
     "watch": "npm run build:dev && babel-node --presets es2015 ./node_modules/gulp/bin/gulp.js watch --reload=true",
-    "build:dev": "npm run test-structure && babel-node --presets es2015 ./node_modules/gulp/bin/gulp.js build --env=development",
-    "build:prod": "npm run test-structure && babel-node --presets es2015 ./node_modules/gulp/bin/gulp.js build --env=production",
+    "build:dev": "npm run scaffolding && babel-node --presets es2015 ./node_modules/gulp/bin/gulp.js build --env=development",
+    "build:prod": "npm run scaffolding && babel-node --presets es2015 ./node_modules/gulp/bin/gulp.js build --env=production",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -36,6 +38,7 @@
     "babel-loader": "^6.3.2",
     "babel-preset-es2015": "^6.22.0",
     "babel-preset-stage-0": "^6.22.0",
+    "connect": "^3.6.1",
     "eslint": "^3.17.0",
     "gulp": "github:gulpjs/gulp#4.0",
     "gulp-autoprefixer": "^3.1.1",
@@ -49,7 +52,9 @@
     "gulp-plumber": "^1.1.0",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^3.1.0",
-    "gulp-webpack": "^1.5.0"
+    "gulp-webpack": "^1.5.0",
+    "open": "0.0.5",
+    "serve-static": "^1.12.1"
   },
   "dependencies": {
     "animejs": "^2.0.2",
