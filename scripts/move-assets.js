@@ -11,10 +11,9 @@ let route = process.cwd(),
 fs.readdir(path.resolve(`${route}/app/assets`), (err, files) => {
   files.forEach(file => {
     let [oldPath, newPath] = [path.join(`${route}/app/assets/${file}`), path.join(`${route}/dist/assets/${file}`)];
-    console.log(oldPath)
     if (!fs.existsSync(newPath)) {
       fs.writeFileSync(newPath, fs.readFileSync(oldPath));
       console.log(`${colors.green}%s${colors.reset}`, `Copied: ${newPath}`);
-    }    
+    }
   });
 });
