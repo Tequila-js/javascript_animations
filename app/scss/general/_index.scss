@@ -10,6 +10,29 @@ h1, h2, h3, h4, h5, h6 {
   text-shadow: 0 4px 9px rgba(0, 0, 0, .5);
 }
 
+.common-list {
+  list-style-type: none !important;
+  li {
+    position: relative;
+    &:before {
+      content: ' ';
+      display: block;
+      border-radius: 50%;
+      background-color: $dark-green;
+      margin-left: -10px;
+      height: 5px;
+      width: 5px;
+      position: absolute;
+      left: 0;
+      top: 6px;
+    }
+  }
+}
+
+p {
+  color: $light-gray;
+}
+
 .text-center {
   text-align: center;
 }
@@ -20,4 +43,18 @@ h1, h2, h3, h4, h5, h6 {
 
 .text-right {
   text-align: right;
+}
+
+.responsive-img {
+  display: block;
+  width: 100%;
+}
+
+
+/* General */
+.glasses {
+  display: block;
+  position: relative;
+  width: 40%;
+  left: 24%;
 }

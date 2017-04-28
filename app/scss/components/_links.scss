@@ -1,0 +1,29 @@
+.common-link {
+  position: relative !important;
+  color: $blue;
+  text-decoration: none;
+  transition: $transition-time color ease;
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    height: 2px;
+    width: 0;
+    background-color: $dark-green;
+    transition: $transition-time width ease;
+  }
+  &:before {
+    left: 0;
+  }
+  &:after {
+    right: 0;
+  }
+  &:hover {
+    color: $dark-blue;
+    &:after,
+    &:before {
+      width: 100%;
+    }
+  }
+}

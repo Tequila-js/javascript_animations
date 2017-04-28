@@ -1,8 +1,12 @@
 $column-number: 12;
 
+$light-gray: #666;
 $gray: #464547;
 $blue: #39c2d7;
+$dark-blue: darken($blue, 10%);
+$green: #A5C844;
+$dark-green: darken($green, 10%);
 
 $gutter: 10px;
 
-$transition-time: 5s;
+$transition-time: .5s;
