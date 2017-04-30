@@ -2,7 +2,20 @@ import $ from 'jquery';
 import reveal from 'reveal';
 import anime from 'animejs';
 
-const timeoutTime = 600;
+const [timeoutTime, animationTime] = [600, 750];
+
+const defaults = {
+  loop: false,
+  direction: 'alternate',
+  elasticity: () => 500
+}
+
+/* Color Declarations*/
+const blue = {
+  nullOp: 'rgba(57, 194, 215, 0)',
+  middleOp: 'rgba(57, 194, 215, .5)',
+  totalOp: 'rgba(57, 194, 215, 1)'
+}
 
 function  getWindowWidth() {
   return window.innerWidth || (document.documentElement  || document.getElementsByTagName('body')[0]).clientWidth;
@@ -14,13 +27,10 @@ function  getWindowWidth() {
 
   $containers.forEach(function fixTitleFormat($item) {
     let $current = $item.find('.title'),
-        text = $current.text().split('');
+      text = ($current.text() || '').split('').map(item => `<span>${item}</span>`);
 
-    text = text.map(item => `<span>${item}</span>`);
     $current.html(text.join(''));
   });
-
-  let containers = ['#first-title', '#presentation-one', '#presentation-two'];
 
   reveal.initialize({
     width: "100%",
@@ -31,40 +41,39 @@ function  getWindowWidth() {
     keyboard: false
   });
 
-  setTimeout(function () { showContent($containers[0]); }, timeoutTime);
+  setTimeout(() => showContent($containers[0]), timeoutTime);
 
-  $('.navigate-right').on('click touchstart',nextFn);
+  $('.navigate-right').on('click touchstart', nextFn);
   $('.navigate-left').on('click touchstart', prevFn);
 
   function nextFn () {
-    if (current === numberOfSlides.length - 1) return;
+    if (current === numberOfSlides - 1) return;
     hideContent($containers[current]);
     current += 1;
-    setTimeout(function () {
-      showContent($containers[current]);
-    }, timeoutTime);
+    setTimeout(() => showContent($containers[current], 200, current), timeoutTime);
   }
 
   function prevFn () {
     if (current === 0) return;
     hideContent($containers[current]);
     current -= 1;
-    setTimeout(function () {
-      showContent($containers[current]);
-    }, timeoutTime);
+    setTimeout(() => showContent($containers[current], 200, current), timeoutTime);
   }
 })(window, document);
 
-function showContent($element) {
-  const time = 200;
+function showContent($element, current = 0) {
   let [title, content] = [$element.find('h1 span').toArray(), $element.find('.content').toArray()];
+
+  if ([1, 2].indexOf(current)) {
+    let glasses = $element.find('.content .glasses').toArray();
+    animateGlasses(glasses);
+  }
 
   displayTitle(title);
   displayContent(content);
 }
 
 function hideContent($element) {
-  const time = 200;
   let [title, content] = [$element.find('h1 span').toArray(), $element.find('.content').toArray()];
 
   hideTitle(title);
@@ -72,55 +81,77 @@ function hideContent($element) {
 }
 
 function displayTitle (elements = [], time = 200) {
+  let positionWidth = 13;
   if (!(elements instanceof Array)) return;
 
   elements.forEach(function (item, i) {
-    const positionWidth = 13;
+    let yDist = i * positionWidth * 3,
+      config = {
+        targets: elements[i],
+        translateX: [
+          {value: 0, duration: 0},
+          {value: i * positionWidth, duration: i * time}
+        ],
+        translateY: [
+          {value: i % 2 === 0? - yDist: yDist, duration: 0},
+          {value: 0, duration: i * time}
+        ],
+        opacity: [
+          {value: 0, duration: 0},
+          {value: 1, duration: animationTime / 2}
+        ],
+        color: [
+          {value: blue.middleOp, duration: animationTime / 2},
+          {value: blue.totalOp, duration: animationTime }
+        ]
+      };
 
-    anime({
-      targets: elements[i],
-      translateX: [
-        {value: 0, duration: 0},
-        {value: i * positionWidth, duration: i * time}
-      ],
-      translateY: [
-        {value: i%2 === 0? -(i * positionWidth): (i * positionWidth), duration: 0},
-        {value: 0, duration: i * time}
-      ],
-      opacity: [
-        {value: .5, duration: .5},
-        {value: 1, duration: 1}
-      ],
-      color: [{value: 'transparent'}, {value: '#FFF'}, {value: '#39c2d7'}],
-      direction: 'alternate',
-      loop: false,
-      elasticity: () => 800
-    });
+    anime(Object.assign({}, config, defaults));
   });
 }
 
 function displayContent(content = [], time = 200) {
   if (!(content instanceof Array)) return;
+  let width = getWindowWidth() * 1.5;
 
-  anime({
-    targets: content,
-    opacity: [
-      {value: 0},
-      {value: 1, duration: time}
-    ],
-    translateX: [
-      {value: getWindowWidth(), duration: 0},
-      {value: 0, duration: 1000}
-    ],
-    elasticity: () => 800,
-    duration: 1000
+  content.forEach(function (items, i) {
+    let config = {
+      targets: content[i],
+      opacity: [
+        {value: 0, duration: animationTime / 2},
+        {value: 1, duration: animationTime}
+      ],
+      translateX: [
+        {value: i % 2? width : - width, duration: 0},
+        {value: i % 2? - width : width, duration: animationTime},
+        {value: 0, duration: animationTime}
+      ]
+    };
+
+    anime(Object.assign({}, config, defaults));
   });
+}
+
+function  animateGlasses (element) {
+  if (!element || !element.length) return;
+  element.forEach(item => (item.style.opacity = 0, item.style.top = 0, item.style.transform = ''));
+
+  let config = {
+    targets: element,
+    opacity: 1,
+    left: 46,
+    top: [0, 50, 100, 144],
+    rotate: '4turn',
+    delay: 2000
+  };
+
+  anime(Object.assign({}, config, defaults));
 }
 
 function hideTitle(elements = [], time = 200) {
   if (!(elements instanceof Array)) return;
 
-  elements.forEach(item => item.style.opacity = 0);
+  elements.forEach(item => (item.style.opacity = 0, item.style.color = blue.totalOp));
 }
 
 function hideContentContainer(content = [], time = 200) {

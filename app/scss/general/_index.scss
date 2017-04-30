@@ -52,9 +52,16 @@ p {
 
 
 /* General */
+.profile-container {
+  position: relative;
+}
+.profile {
+  display: block;
+  margin: auto;
+}
 .glasses {
   display: block;
-  position: relative;
-  width: 40%;
-  left: 24%;
+  position: absolute;
+  margin: 0 auto !important;
+  width: 100px;
 }
