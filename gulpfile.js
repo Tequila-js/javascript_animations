@@ -76,13 +76,6 @@ function minifyHTML(done) {
   done();
 }
 
-function cleanAssets(done) {
-  gulp.src(['./dist/css/*.css', './dist/css/*.map', './dist/js/*.js', './dist/js/*.map'])
-    .pipe(clean());
-
-  done();
-}
-
 gulp.task('watch', function () {
   let open = require('open'),
       connect = require('connect'),
@@ -103,4 +96,4 @@ gulp.task('watch', function () {
 });
 
 
-gulp.task('build', gulp.series(cleanAssets, generateCSSVendor, generateCSS, generateJS, minifyHTML, done => done()));
+gulp.task('build', gulp.series(generateCSSVendor, generateCSS, generateJS, minifyHTML, done => done()));
