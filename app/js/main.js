@@ -8,14 +8,14 @@ const defaults = {
   loop: false,
   direction: 'alternate',
   elasticity: () => 500
-}
+};
 
 /* Color Declarations*/
 const blue = {
   nullOp: 'rgba(57, 194, 215, 0)',
   middleOp: 'rgba(57, 194, 215, .5)',
   totalOp: 'rgba(57, 194, 215, 1)'
-}
+};
 
 function  getWindowWidth() {
   return window.innerWidth || (document.documentElement  || document.getElementsByTagName('body')[0]).clientWidth;
@@ -41,23 +41,23 @@ function  getWindowWidth() {
     keyboard: false
   });
 
-  setTimeout(() => showContent($containers[0]), timeoutTime);
+  showContent($containers[0]);
 
   $('.navigate-right').on('click touchstart', nextFn);
   $('.navigate-left').on('click touchstart', prevFn);
 
   function nextFn () {
     if (current === numberOfSlides - 1) return;
-    hideContent($containers[current]);
+
     current += 1;
-    setTimeout(() => showContent($containers[current], 200, current), timeoutTime);
+    showContent($containers[current], 200, current);
   }
 
   function prevFn () {
     if (current === 0) return;
-    hideContent($containers[current]);
+
     current -= 1;
-    setTimeout(() => showContent($containers[current], 200, current), timeoutTime);
+    showContent($containers[current], 200, current);
   }
 })(window, document);
 
@@ -73,13 +73,6 @@ function showContent($element, current = 0) {
   displayContent(content);
 
   $element.find('h1').height(titleSize);
-}
-
-function hideContent($element) {
-  let [title, content] = [$element.find('h1 span').toArray(), $element.find('.content').toArray()];
-
-  hideTitle(title);
-  hideContentContainer(content);
 }
 
 function displayTitle (elements = [], time = 200) {
@@ -106,13 +99,13 @@ function displayTitle (elements = [], time = 200) {
         {value: 1, duration: animationTime / 2}
       ],
       color: [
-        {value: blue.middleOp, duration: animationTime / 2}, 
+        {value: blue.middleOp, duration: animationTime / 2},
         {value: blue.totalOp, duration: animationTime }
       ]
     };
 
-    if (xVal >= availableWidth && item.innerText === '') { 
-    [xVal, yVal] = [0, yVal + 60];
+    if (xVal >= availableWidth && item.innerText === '') {
+      [xVal, yVal] = [0, yVal + 60];
     } else {
       xVal += item.innerText === ''? 15 : item.offsetWidth;
     }
@@ -154,21 +147,9 @@ function  animateGlasses (element) {
     opacity: 1,
     left: 46,
     top: [0, 50, 100, 144],
-    rotate: '4turn',
+    rotate: '5turn',
     delay: 2000
   };
 
   anime(Object.assign({}, config, defaults));
-}
-
-function hideTitle(elements = [], time = 200) {
-  if (!(elements instanceof Array)) return;
-
-  elements.forEach(item => (item.style.opacity = 0, item.style.color = blue.totalOp));
-}
-
-function hideContentContainer(content = [], time = 200) {
-  if (!(content instanceof Array) || !content) return;
-
-  content.forEach(item => item.style.opacity = 0);
 }
