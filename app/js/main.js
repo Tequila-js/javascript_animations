@@ -62,15 +62,17 @@ function  getWindowWidth() {
 })(window, document);
 
 function showContent($element, current = 0) {
-  let [title, content] = [$element.find('h1 span').toArray(), $element.find('.content').toArray()];
+  let [title, content, titleSize] = [$element.find('h1 span').toArray(), $element.find('.content').toArray(), 0];
 
   if ([1, 2].indexOf(current)) {
     let glasses = $element.find('.content .glasses').toArray();
     animateGlasses(glasses);
   }
 
-  displayTitle(title);
+  titleSize = displayTitle(title) + 65;
   displayContent(content);
+
+  $element.find('h1').height(titleSize);
 }
 
 function hideContent($element) {
@@ -81,33 +83,44 @@ function hideContent($element) {
 }
 
 function displayTitle (elements = [], time = 200) {
-  let positionWidth = 13;
+  let [positionWidth, width, availableWidth, xVal, yVal]= [35, getWindowWidth(), 0, 0, 0];
+  availableWidth = width * .25;
+
   if (!(elements instanceof Array)) return;
 
   elements.forEach(function (item, i) {
-    let yDist = i * positionWidth * 3,
-      config = {
-        targets: elements[i],
-        translateX: [
-          {value: 0, duration: 0},
-          {value: i * positionWidth, duration: i * time}
-        ],
-        translateY: [
-          {value: i % 2 === 0? - yDist: yDist, duration: 0},
-          {value: 0, duration: i * time}
-        ],
-        opacity: [
-          {value: 0, duration: 0},
-          {value: 1, duration: animationTime / 2}
-        ],
-        color: [
-          {value: blue.middleOp, duration: animationTime / 2},
-          {value: blue.totalOp, duration: animationTime }
-        ]
-      };
+    let [config, yDist] = [null, i * positionWidth * 3];
+
+    config = {
+      targets: elements[i],
+      left: [
+        {value: 0, duration: 0},
+        {value: xVal, duration: i * time}
+      ],
+      translateY: [
+        {value: i % 2 === 0? - yDist: yDist, duration: 0},
+        {value: yVal, duration: animationTime}
+      ],
+      opacity: [
+        {value: 0, duration: 0},
+        {value: 1, duration: animationTime / 2}
+      ],
+      color: [
+        {value: blue.middleOp, duration: animationTime / 2}, 
+        {value: blue.totalOp, duration: animationTime }
+      ]
+    };
+
+    if (xVal >= availableWidth && item.innerText === '') { 
+    [xVal, yVal] = [0, yVal + 60];
+    } else {
+      xVal += item.innerText === ''? 15 : item.offsetWidth;
+    }
 
     anime(Object.assign({}, config, defaults));
   });
+
+  return yVal;
 }
 
 function displayContent(content = [], time = 200) {
