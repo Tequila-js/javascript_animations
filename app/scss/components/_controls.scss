@@ -1,8 +1,14 @@
 .controls {
   div {
-    opacity: 1 !important;
+    opacity: 0 !important;
     cursor: pointer;
-    transition: $transition-time border-color ease;
+    transition: $transition-time border-color ease, $transition-time opacity ease;
+    &:not(.enabled) {
+      display: none;
+    }
+    &.enabled {
+      opacity: 1 !important;
+    }
   }
   .navigate-left {
     border-right-color: $gray !important;
