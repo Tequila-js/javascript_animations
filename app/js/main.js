@@ -23,7 +23,8 @@ function  getWindowWidth() {
 
 (function ready(window, document) {
   let $containers = Array.from(document.querySelectorAll('.slides > section')).map(item => $(item)),
-    [current, numberOfSlides] = [0, $containers.length];
+    hash = location.hash.replace('#/', ''),
+    [current, numberOfSlides] = [!hash ? 0 : parseInt(hash), $containers.length];
 
   $containers.forEach(function fixTitleFormat($item) {
     let $current = $item.find('.title'),
@@ -36,12 +37,13 @@ function  getWindowWidth() {
     width: "100%",
     height: "100%",
     progress: true,
+    history: true,
     transition: 'none',
     center: false,
     keyboard: false
   });
 
-  showContent($containers[0]);
+  showContent($containers[current]);
 
   $('.navigate-right').on('click touchstart', nextFn);
   $('.navigate-left').on('click touchstart', prevFn);
