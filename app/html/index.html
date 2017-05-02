@@ -11,7 +11,7 @@
   <body>
     <main class="reveal">
       <div class="slides">
-        <section id="first-title">
+        <section>
           <h1 class="title">Web Animations</h1>
         </section>
         <section>
@@ -53,6 +53,55 @@ Marco disfruta ver películas, aprender cosas nuevas y explorar diferentes tecno
             <div class="content">
               <div class="column s-12 content">
                 Animations are critical for user experience on many applications. There are many ways to implement web animations, such as &nbsp;<strong>CSS transitions/animations</strong>&nbsp; or &nbsp;<strong>JavaScript based animations</strong>.
+              </div>
+            </div>
+          </div>
+        </section>
+        <section>
+          <h1 class="title">CSS Transitions</h1>
+          <div class="container">
+            <div class="column s-12 content">
+              <p>Provide an easy way to handle the changes DOM element properties as result of a interactions of its own properties or states.</p>
+              <p>Recommended to handle change of states on small elements.</p>
+            </div>
+            <div class="column s-6 content">
+              <pre class="prettyprint lang-css example code-example">
+#button {
+  border-radius: 5px;
+  display: inline-block;
+  font-size: 10px;
+  padding: 7px 15px;
+  position: relative;
+  background-color: transparent;
+  border: 1px solid #39c2d7;
+  color: #39c2d7;
+  text-decoration: none;
+}
+  #button:before {
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 0;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  background: transparent;
+  transition: .75s background ease, .75s width ease;
+}
+#button:hover {
+  color: white;
+}
+#button:hover:before {
+  background: #39c2d7;
+  width: 100%;
+}
+              </pre>
+            </div>
+            <div class="column s-6 content">
+              <div class="example code-example">
+                <div class="example-container text-center">
+                  <a href="javascript:void(0)" id="button">Button</a>
+                </div>
               </div>
             </div>
           </div>
