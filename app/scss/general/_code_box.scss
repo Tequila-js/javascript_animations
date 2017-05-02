@@ -1,0 +1,61 @@
+.example {
+  width: 90%;
+  margin: 15px auto !important;
+  box-shadow: 0px 0px 6px rgba(0,0,0,0.3);
+  min-height: 200px;
+  max-height: 350px;
+  border-radius: $border-radius;
+  padding: $gutter * 3  $gutter $gutter $gutter !important;
+  font-size: 12px !important;
+  font-family: 'Roboto', helvetica !important;
+  position: relative;
+  border: 1px solid $gray !important;
+  line-height: 1.2em !important;
+  overflow-y: auto !important;
+
+  &.lang-css {
+    .lit {
+      color: $dark-blue;
+    }
+    .pun {
+      color: $dark-green;
+    }
+  }
+
+  &.code-example {
+    &:before {
+      content: 'Code example';
+    }
+  }
+  &.component-example {
+    &:before {
+      content: 'Component Example';
+    }
+  }
+
+  &.code-example,
+  &.component-example {
+    &:before {
+      position: absolute;
+      padding: 5px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      background-color: $blue;
+      color: white;
+      box-sizing: border-box;
+    }
+  }
+}
+
+.example-container {
+  position: absolute;
+  padding-top: $gutter * 3 !important;
+  max-width: 200px;
+  max-height: 100px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto !important;
+}
