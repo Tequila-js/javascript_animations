@@ -1,9 +1,13 @@
 .slides {
-  .title span {
-    position: absolute;
-    display: inline-block;
-    opacity: 0;
-    transform: translateX(0);
+  .title {
+    margin-bottom: $gutter * 2;
+    span {
+      position: absolute;
+      display: inline-block;
+      font-size: 65px;
+      opacity: 0;
+      transform: translateX(0);
+    }
   }
 
   .content {

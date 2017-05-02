@@ -10,6 +10,7 @@
 .column {
   float: left;
   padding: $gutter;
+  box-sizing: border-box;
 }
 
 @include createGrid();
