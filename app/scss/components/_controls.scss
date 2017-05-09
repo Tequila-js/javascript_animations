@@ -1,8 +1,9 @@
 .controls {
   div {
     opacity: 0 !important;
+    border-width: 20px !important;
     cursor: pointer;
-    transition: $transition-time border-color ease, $transition-time opacity ease;
+    transition: $transition-time * 3 border-color ease, $transition-time * 3 opacity ease !important;
     &:not(.enabled) {
       display: none;
     }
@@ -11,17 +12,17 @@
     }
   }
   .navigate-left {
-    border-right-color: $gray !important;
+    border-right-color: white !important;
     &:hover,
     &:active {
-      border-right-color: $blue !important;
+      border-right-color: $gray !important;
     }
   }
   .navigate-right {
-    border-left-color: $gray !important;
+    border-left-color: white !important;
     &:hover,
     &:active {
-      border-left-color: $blue !important;
+      border-left-color: $gray !important;
     }
   }
-}
+} 

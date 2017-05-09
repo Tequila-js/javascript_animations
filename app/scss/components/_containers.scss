@@ -1,18 +1,11 @@
 .slides {
   .title {
-    margin-bottom: $gutter * 2;
+    font-size: 4.5rem;
     span {
-      position: absolute;
       display: inline-block;
-      font-size: 65px;
       opacity: 0;
-      transform: translateX(0);
+      position: relative;
+      text-align: left;
     }
-  }
-
-  .content {
-    opacity: 0;
-    transform: translateX(-100%);
-    text-align: left;
   }
 }

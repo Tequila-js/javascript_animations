@@ -1,8 +1,9 @@
 .common-link {
   position: relative !important;
-  color: $blue;
+  color: white;
   text-decoration: none;
   transition: $transition-time color ease;
+  text-shadow: 0 0 0 rgba(0, 0, 0, 0);
   &:before,
   &:after {
     content: '';
@@ -20,7 +21,7 @@
     right: 0;
   }
   &:hover {
-    color: $dark-blue;
+    text-shadow: 0 0 10px rgba(0, 0, 0, .5);
     &:after,
     &:before {
       width: 100%;

@@ -3,39 +3,20 @@
 }
 
 body {
-  background: white;
+  background: $blue;
   font-family: 'Roboto', 'Helvetica';
 }
 
 h1, h2, h3, h4, h5, h6 {
-  color: $blue;
+  color: white;
   font-weight: bold;
   text-align: left;
-  text-shadow: 0 4px 9px rgba(0, 0, 0, .5);
+  text-shadow: 0 0 18px rgba(0, 0, 0, 0.5);
   position: relative;
 }
 
-.common-list {
-  list-style-type: none !important;
-  li {
-    position: relative;
-    &:before {
-      content: ' ';
-      display: block;
-      border-radius: 50%;
-      background-color: $dark-green;
-      margin-left: -10px;
-      height: 5px;
-      width: 5px;
-      position: absolute;
-      left: 0;
-      top: 6px;
-    }
-  }
-}
-
 p {
-  color: $light-gray;
+  color: white;
 }
 
 .text-center {
@@ -55,6 +36,10 @@ p {
   width: 100%;
 }
 
+.list-unstyled {
+  list-style: none !important;
+}
+
 section, div, p {
   font-size: 25px !important;
 }
@@ -62,6 +47,14 @@ section, div, p {
 /* General */
 .profile-container {
   position: relative;
+}
+
+.social-media {
+  max-width: 100px !important;
+  display: static;
+  &:hover {
+    transform: scale(1.1);
+  }
 }
 .profile {
   display: block;
