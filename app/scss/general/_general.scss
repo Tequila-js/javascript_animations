@@ -79,6 +79,7 @@ section, div, p {
   border: 1px solid #39c2d7 !important;
   color: #39c2d7 !important;
   text-decoration: none;
+  z-index: 1;
 
   &:before {
     content: '';

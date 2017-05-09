@@ -5,21 +5,17 @@
   min-height: 200px;
   max-height: 350px;
   border-radius: $border-radius;
-  padding: $gutter * 3  $gutter $gutter $gutter !important;
-  font-size: 12px !important;
+  padding: $gutter * 3  0 0 0 !important;
+  font-size: 1rem !important;
   font-family: 'Roboto', helvetica !important;
   position: relative;
   border: 1px solid $gray !important;
   line-height: 1.2em !important;
-  overflow-y: auto !important;
-
-  &.lang-css {
-    .lit {
-      color: $dark-blue;
-    }
-    .pun {
-      color: $dark-green;
-    }
+  overflow-y: hidden !important;
+  background: white;
+  &:before {
+    background-color: $gray;
+    color: white;
   }
 
   &.code-example {
@@ -41,13 +37,15 @@
       left: 0;
       top: 0;
       width: 100%;
-      background-color: $blue;
-      color: white;
       box-sizing: border-box;
     }
   }
 }
 
+.code-example-container {
+  overflow-y: auto;
+  max-height: 320px;
+}
 .example-container {
   position: absolute;
   padding-top: $gutter * 3 !important;
@@ -58,4 +56,29 @@
   right: 0;
   bottom: 0;
   margin: auto !important;
+  background: white;
+}
+
+.prettyprint {
+  margin: 0 !important;
+  padding: $gutter !important;
+  width: 100% !important;
+  border: none !important;
+  box-shadow: none !important;
+  font-size: 1rem !important;
+  &.lang-css {
+    background: $dark-gray;
+    .com {
+      color: $blue;
+    }
+    .lit {
+      color: $green;
+    }
+    .pln, .kwd {
+      color: white;
+    }
+    .pun {
+      color: white;
+    }
+  }
 }
