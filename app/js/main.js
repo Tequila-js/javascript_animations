@@ -24,8 +24,8 @@ function animateGlasses (element) {
   let config = {
     targets: element,
     opacity: 1,
-    left: 46,
-    top: [0, 50, 100, 144],
+    left: '21%',
+    top: ['0%', '10%', '20%', '39%'],
     rotate: '5turn',
     delay: 2000
   };
