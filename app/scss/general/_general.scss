@@ -51,7 +51,7 @@ section, div, p {
 
 .social-media {
   max-width: 100px !important;
-  display: static;
+  transition: $transition-time transform ease;
   &:hover {
     transform: scale(1.1);
   }
