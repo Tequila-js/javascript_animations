@@ -118,11 +118,62 @@ Marco disfruta ver películas, aprender cosas nuevas y explorar diferentes tecno
         <section>
           <h1 class="title">CSS Animations</h1>
           <div class="container">
+            <div class="column s-12 content text-left">
+              <strong>CSS animations<strong>&nbsp; allow make animations between a set of starting property values and a final set rather than between states.
+            </div>
             <div class="column s-6 content">
-              So much content
+              <div class="example code-example">
+                <div class="code-example-container">
+                  <pre class="prettyprint lang-css">
+@keyframes left {
+    0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes right {
+    0% { transform: rotate(0deg); }
+  100% { transform: rotate(-360deg); }
+}
+
+#loader {
+  height: 55px;
+  width: 55px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+#loader:before, #loader:after {
+  content: '';
+  border-radius: 50%;
+  display: block;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+}
+#loader:before {
+  border-left: 1px solid red;
+  animation: left 1s infinite;
+  animation-timing-function: linear;
+}
+#loader:after {
+  border-bottom: 1px solid blue;
+  animation: right 1s infinite;
+  animation-timing-function: linear;
+}
+                  </pre>
+                </div>
+              </div>
             </div>
             <div class="column s-6 content animation-container-demo">
-              So much content
+              <div class="example component-example">
+                <div class="example-container text-center">
+                  <div id="loader"></div>
+                </div>
+              </div>
               <div class="character-container">
                 <div class="character">
                   <div class="head">
