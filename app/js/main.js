@@ -49,15 +49,15 @@ function displayTitle (elements = []) {
       targets: elements[i],
       left: [
         {value: (Math.random() * 10) > 5 ? currentVal : -currentVal, duration: 0},
-        {value: 0, duration: animationTime * 3}
+        {value: 0, duration: animationTime * 2}
       ],
       top: [
         {value: (Math.random() * 10) > 5 ? currentVal : -currentVal, duration: 0},
-        {value: 0, duration: animationTime * 3}
+        {value: 0, duration: animationTime * 2}
       ],
       opacity: [
         {value: 0, duration: 0},
-        {value: 1, duration: animationTime * 3}
+        {value: 1, duration: animationTime * 2}
       ],
       elasticity: () => 500
     };

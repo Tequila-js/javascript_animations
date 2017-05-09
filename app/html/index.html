@@ -64,12 +64,14 @@ Marco disfruta ver películas, aprender cosas nuevas y explorar diferentes tecno
         <section>
           <h1 class="title">CSS Transitions</h1>
           <div class="container">
-            <div class="column s-12 content">
-              <p>Provide an easy way to handle the changes DOM element properties as result of a interactions of its own properties or states.</p>
-              <p>Recommended to handle change of states on small elements.</p>
+            <div class="column s-12 content text-left">
+              <p>Performed one time between two different states for one and multiple properties.</p>
+              <p>Recommended to handle small state changes.</p>
             </div>
             <div class="column s-6 content">
-              <pre class="prettyprint lang-css example code-example">
+              <div class="example code-example">
+                <div class="code-example-container">
+                  <pre class="prettyprint lang-css">
 #button {
   border-radius: 5px;
   display: inline-block;
@@ -80,6 +82,7 @@ Marco disfruta ver películas, aprender cosas nuevas y explorar diferentes tecno
   border: 1px solid #39c2d7;
   color: #39c2d7;
   text-decoration: none;
+  z-index: 1;
 }
 #button:before {
   content: '';
@@ -99,7 +102,9 @@ Marco disfruta ver películas, aprender cosas nuevas y explorar diferentes tecno
   background: #39c2d7;
   width: 100%;
 }
-              </pre>
+                  </pre>
+                </div>
+              </div>
             </div>
             <div class="column s-6 content">
               <div class="example code-example">
