@@ -1,0 +1,119 @@
+$skin: #c68642;
+.character-1-container {
+  .character-container {
+    top: 52px;
+    left: 32px;
+  }
+}
+
+.character1 {
+  position: relative;
+  transition: 4s left ease;
+  .head {
+    position: absolute;
+    height: 50px;
+    width: 30px;
+    left: 30px;
+    border-radius: 20px;
+    border: 1px solid white;
+    transform: rotate(36deg);
+    overflow: hidden;
+    background: red;
+    z-index: 5;
+  }
+
+  .hear {
+    width: 0;
+    height: 0;
+    border-left: 1px solid transparent !important;
+    border-right: 5px solid transparent !important;
+    border-bottom: 16px solid yellow !important;
+    position: absolute;
+    top: -4px;
+    left: 37px;
+    transform: rotate(-40deg);
+    z-index: 6;
+  }
+
+  .eye {
+    width: 12px;
+    height: 7px;
+    border-radius: 0 0 50% 50%;
+    top: 13px;
+    right: 3px;
+    background: white;
+    position: absolute;
+    transform: rotate(15deg);
+  }
+
+  .mouth {
+    height: 23px;
+    width: 14px;
+    transform: rotate(4deg);
+    background: $skin;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    hr {
+      border-color: black;
+      width: 30%;
+    }
+  }
+
+  .chest {
+    position: absolute;
+    width: 47px;
+    height: 115px;
+    background: red;
+    z-index: 0;
+    top: 26px;
+    left: -21px;
+    border-radius: 32px;
+    transform: rotate(37deg);
+  }
+
+  .arm {
+    transition: 6s transform ease;
+    div {
+      position: absolute;
+      left: 17px;
+      top: 48px;
+      border-radius: 9px;
+      width: 15px;
+      height: 57px;
+      border: 1px solid white;
+      background: red;
+    }
+
+    div + div {
+      position: absolute;
+      left: 17px;
+      top: 96px;
+      border-radius: 9px;
+      width: 49px;
+      height: 14px;
+      border: 1px solid white;
+      background: red;
+    }
+  }
+}
+
+.character-1-container {
+  .character1 {
+    left: -200px;
+  }
+
+  .arm {
+    transform: rotate(10deg);
+  }
+
+  &:hover {
+    .character1 {
+      left: 0;
+    }
+
+    .arm {
+      transform: rotate(-10deg);
+    }
+  }
+}
