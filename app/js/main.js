@@ -107,13 +107,15 @@ function showContent($element, current = 0) {
 (function ready(window, document) {
   let $containers = Array.from(document.querySelectorAll('.slides > section')).map(item => $(item)),
     hash = location.hash.replace('#/', ''),
-    [current, numberOfSlides] = [!hash ? 0 : parseInt(hash, 10), $containers.length];
+    [current, numberOfSlides, language] = [!hash ? 0 : parseInt(hash, 10), $containers.length, ''];
+
 
   $containers.forEach(function fixTitleFormat($item) {
-    let $current = $item.find('.title'),
-      text = ($current.text() || '').split('').map(item => `<span>${item === ' ' ? '&nbsp;' : item}</span>`);
-
-    $current.html(text.join(''));
+    Array.from($item.find('.title'))
+      .forEach(currentTitle => {
+        let text = (currentTitle.innerText || '').split('').map(item => `<span>${item === ' ' ? '&nbsp;' : item}</span>`).join('');
+        currentTitle.innerHTML = text;
+      });
   });
 
   reveal.initialize({
@@ -160,4 +162,3 @@ function showContent($element, current = 0) {
   });
 
 }(window, document));
-
