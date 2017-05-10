@@ -1,10 +1,8 @@
-import fs from 'fs';
 import path from 'path';
 
 import {argv} from 'yargs';
 import gulp from 'gulp';
 import sass from 'gulp-sass';
-import clean from 'gulp-clean';
 import concat from 'gulp-concat';
 import htmlmin from 'gulp-html-minifier';
 import sourcemaps from 'gulp-sourcemaps';
@@ -17,7 +15,7 @@ import webpack from 'gulp-webpack';
 
 import config from './config/webpack';
 
-const [reload, env, current] = [argv.reload == 'true', argv.env === 'production' ? 'production' : 'development', process.cwd()],
+const [reload, env] = [argv.reload === 'true', argv.env === 'production' ? 'production' : 'development'],
   jsConfig = config(env),
   colors = {
     green: '\x1b[32m',
@@ -25,7 +23,7 @@ const [reload, env, current] = [argv.reload == 'true', argv.env === 'production'
     reset: '\x1b[0m'
   };
 
-console.log(`${colors.blue}%s${colors.reset}`, `livereload active: ${reload? 'ON' : 'OFF'}`);
+console.log(`${colors.blue}%s${colors.reset}`, `livereload active: ${reload ? 'ON' : 'OFF'}`);
 console.log(`${colors.blue}%s${colors.reset}`, `environment: ${env}`);
 
 function generateCSSVendor(done) {
@@ -50,7 +48,7 @@ function generateCSS(done) {
       cascade: true
     }))
     .pipe(gulpIf(env === 'development', sourcemaps.write('.')))
-    .pipe(gulpIf(env != 'development', minifycss()))
+    .pipe(gulpIf(env !== 'development', minifycss()))
     .pipe(gulp.dest('./dist/css'))
     .pipe(gulpIf(reload, livereload()));
 
@@ -77,14 +75,12 @@ function minifyHTML(done) {
 }
 
 gulp.task('watch', function () {
-  let open = require('open'),
-      connect = require('connect'),
-      serveStatic = require('serve-static');
+  let [open, connect, serveStatic] = [require('open'), require('connect'), require('serve-static')];
 
   connect()
     .use(serveStatic(path.resolve(`${__dirname}/dist`)))
     .listen(8080, () => {
-      console.log(`${colors.blue}%s${colors.reset}`, `Running on: localhost:8080`);
+      console.log(`${colors.blue}%s${colors.reset}`, 'Running on: localhost:8080');
       open('http://localhost:8080');
     });
 
