@@ -74,22 +74,23 @@ function displayContent(content = []) {
 
   let width = getWindowWidth() * 1.5;
 
-  content.forEach(function (items, i) {
-    let config = {
-      targets: content[i],
-      opacity: [
-        {value: 0, duration: animationTime / 2},
-        {value: 1, duration: animationTime}
-      ],
-      translateX: [
-        {value: i % 2 ? width : -width, duration: 0},
-        {value: i % 2 ? -width : width, duration: animationTime},
-        {value: 0, duration: animationTime}
-      ]
-    };
+  content
+    .forEach(function (items, i) {
+      let config = {
+        targets: content[i],
+        opacity: [
+          {value: 0, duration: animationTime / 2},
+          {value: 1, duration: animationTime}
+        ],
+        translateX: [
+          {value: i % 2 ? width : -width, duration: 0},
+          {value: i % 2 ? -width : width, duration: animationTime},
+          {value: 0, duration: animationTime}
+        ]
+      };
 
-    anime(Object.assign({}, config, defaults));
-  });
+      anime(Object.assign({}, config, defaults));
+    });
 }
 
 function showContent($element, current = 0) {
@@ -104,19 +105,34 @@ function showContent($element, current = 0) {
   displayContent(content);
 }
 
+function toggleContentByLanguage (language = '') {
+  let $hide, $show, $section = $('.slides > section');
+  if (language === 'english') {
+    [$show, $hide] = [$section.find('.english'), $section.find('.spanish')];
+  } else {
+    [$hide, $show] = [$section.find('.english'), $section.find('.spanish')];
+  }
+
+  $show.removeClass('inactive');
+  $hide.addClass('inactive');
+}
+
 (function ready(window, document) {
-  let $containers = Array.from(document.querySelectorAll('.slides > section')).map(item => $(item)),
+  let $containers = $('.slides > section'),
+    $containersArray = Array.from(document.querySelectorAll('.slides > section')).map(item => $(item)),
     hash = location.hash.replace('#/', ''),
-    [current, numberOfSlides, language] = [!hash ? 0 : parseInt(hash, 10), $containers.length, ''];
+    [current, numberOfSlides, language] = [!hash ? 0 : parseInt(hash, 10), $containers.length, 'english'];
 
 
-  $containers.forEach(function fixTitleFormat($item) {
+  $containersArray.forEach(function fixTitleFormat($item) {
     Array.from($item.find('.title'))
       .forEach(currentTitle => {
         let text = (currentTitle.innerText || '').split('').map(item => `<span>${item === ' ' ? '&nbsp;' : item}</span>`).join('');
         currentTitle.innerHTML = text;
       });
   });
+
+  toggleContentByLanguage(language);
 
   reveal.initialize({
     width: '100%',
@@ -127,7 +143,7 @@ function showContent($element, current = 0) {
     center: false
   });
 
-  showContent($containers[current]);
+  showContent($containersArray[current]);
 
   function nextFn () {
     if (current === numberOfSlides - 1) {
@@ -135,7 +151,7 @@ function showContent($element, current = 0) {
     }
 
     current += 1;
-    showContent($containers[current], 200, current);
+    showContent($containersArray[current], 200, current);
   }
 
   function prevFn () {
@@ -144,7 +160,7 @@ function showContent($element, current = 0) {
     }
 
     current -= 1;
-    showContent($containers[current], 200, current);
+    showContent($containersArray[current], 200, current);
   }
 
   $('.navigate-right').on('click touchstart', nextFn);

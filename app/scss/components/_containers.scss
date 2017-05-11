@@ -1,6 +1,9 @@
 .slides {
   .title {
     font-size: 4.5rem;
+    &.inactive {
+      display: none;
+    }
     span {
       display: inline-block;
       opacity: 0;
