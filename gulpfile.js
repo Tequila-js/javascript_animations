@@ -86,7 +86,7 @@ gulp.task('watch', function () {
 
   livereload.listen();
 
-  gulp.watch(['./app/js/*.js'], gulp.series(generateJS), done => done());
+  gulp.watch(['./app/js/*.js', './app/js/**/*.js'], gulp.series(generateJS), done => done());
   gulp.watch(['./app/scss/*.scss', './app/scss/**/*.scss'], gulp.series(generateCSSVendor, generateCSS), done => done());
   gulp.watch(['./app/html/*.html'], gulp.series(minifyHTML), done => done());
 });
