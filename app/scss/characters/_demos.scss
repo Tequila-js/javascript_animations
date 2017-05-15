@@ -1,0 +1,64 @@
+.hover-demo,
+.animation-demo {
+  height: 200px;
+  width: 120px;
+  position: relative;
+  margin: 0 auto !important;
+}
+
+.hover-demo {
+  transition: color 3s ease;
+  p {
+    position: absolute;
+    margin: auto !important;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    height: 31px;
+    width: 72px;
+    z-index: -1;
+  }
+
+  .character {
+    transform: translateY(154px);
+    transition: transform 3s ease;
+  }
+
+  &:hover {
+    .character{
+      transform: translateY(0);
+    }
+  }
+}
+
+.animation-demo {
+  .character {
+    animation: hide-character 6s infinite;
+    animation-timing-function: cubic-bezier(0.37, 0.58, 0.57, 1);
+    will-change: transform;
+  }
+}
+
+.js-demo {
+  height: 200px;
+  width: 120px;
+  position: relative;
+  display: inline-block;
+  .character {
+    transform: translateY(154px);
+  }
+}
+
+.animation-controls {
+  width: 500px;
+  display: inline-block;
+
+  ul {
+    margin: 0;
+  }
+}
+
+#js-demo-progress {
+  width: 377px;
+}
