@@ -5,9 +5,9 @@
   min-height: 200px;
   max-height: 350px;
   border-radius: $border-radius;
-  padding: $gutter * 3  0 0 0 !important;
+  padding: 29px  0 0 0 !important;
   font-size: 1rem !important;
-  font-family: 'Roboto', helvetica !important;
+  font-family: 'Open Sans', sans-serif !important;
   position: relative;
   border: 1px solid $gray !important;
   line-height: 1.2em !important;
@@ -20,12 +20,12 @@
 
   &.code-example {
     &:before {
-      content: 'Code example';
+      content: 'Ejemplo de código';
     }
   }
   &.component-example {
     &:before {
-      content: 'Component Example';
+      content: 'Ejemplo del componente';
     }
   }
 
@@ -39,6 +39,14 @@
       width: 100%;
       box-sizing: border-box;
     }
+  }
+
+  &.left {
+    margin-left: 0 !important;
+  }
+
+  &.right {
+    margin-right: 0 !important;
   }
 }
 
