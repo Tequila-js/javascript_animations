@@ -1,7 +1,6 @@
 export const animationDefaults = {
   loop: false,
-  direction: 'alternate',
-  elasticity: () => 500
+  direction: 'alternate'
 };
 
 export const revealDefaults = {

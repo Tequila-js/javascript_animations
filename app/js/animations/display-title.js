@@ -11,7 +11,7 @@ export default function displayTitle(elements = [], animationTime = 350) {
 
   elements.forEach(function (element, i) {
     element.style.opacity = 0;
-    let duration = (i + 1) * animationTime,
+    let duration = (i + .5) * animationTime,
       config = {
         targets: element,
         left: [
@@ -27,16 +27,11 @@ export default function displayTitle(elements = [], animationTime = 350) {
           {value: 0}
         ],
         scale: [
-          {value: generateRandom(5)},
-          {value: generateRandom(5)},
+          {value: Math.abs(generateRandom(5))},
           {value: 1}
         ],
-        opacity: [
-          {value: .5},
-          {value: 1}
-        ],
-        duration,
-        elasticity: () => 800
+        opacity: [{value: 0}, {value: 1}],
+        duration
       };
 
       anime(Object.assign({}, config, animationDefaults));

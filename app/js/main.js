@@ -2,7 +2,8 @@ import $ from 'jquery';
 import reveal from 'reveal';
 
 import {revealDefaults} from './defaults';
-import {displayTitle, displayContent, animateGlasses} from './animations';
+import {displayTitle, displayContent, animateGlasses,
+  animateSocialMedia} from './animations';
 
 function showContent($element, current = 0) {
   let [title, content] = [$element.find('h1 span').toArray(), $element.find('.content').toArray()];
@@ -12,6 +13,7 @@ function showContent($element, current = 0) {
 
   if ([1, 2].indexOf(current) > -1) {
     animateGlasses($element.find('.glasses').toArray());
+    animateSocialMedia($element.find('.social-media').toArray());
   }
 }
 

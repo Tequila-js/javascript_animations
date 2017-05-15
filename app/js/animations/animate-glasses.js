@@ -29,4 +29,4 @@ export default function animateGlasses(elements = [], animationTime = 350) {
 
     anime(Object.assign({}, config, glassesDefaults, animationDefaults));
   });
-};
+}; 
