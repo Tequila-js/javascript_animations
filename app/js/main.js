@@ -3,7 +3,7 @@ import reveal from 'reveal';
 
 import {revealDefaults} from './defaults';
 import {displayTitle, displayContent, animateGlasses,
-  animateSocialMedia} from './animations';
+  animateSocialMedia, animateCharacter} from './animations';
 
 function showContent($element, current = 0) {
   let [title, content] = [$element.find('h1 span').toArray(), $element.find('.content').toArray()];
@@ -30,6 +30,8 @@ function showContent($element, current = 0) {
   });
 
   reveal.initialize(revealDefaults);
+  animateCharacter();
+
   showContent($containers[current], current);
 
   function nextFn () {

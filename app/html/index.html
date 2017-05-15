@@ -108,7 +108,6 @@ Marco disfruta ver películas, aprender cosas nuevas y explorar diferentes tecno
                   </div>
                 </div>
               </div>
-              
             </div>
           <div>
         </section>
@@ -169,6 +168,8 @@ Marco disfruta ver películas, aprender cosas nuevas y explorar diferentes tecno
               <p>Puede controlarse el tiempo de ejecución así como de retardo.</p>
               <p>Puede ejercutarse múltiples veces.</p>
               <p>Uso de GPU.</p>
+              <p>Poco escalable.</p>
+              <p>Recomendado para animaciones simples.</p>
             </div>
             <div class="column s-12 content">
               <div class="animation-demo">
@@ -259,6 +260,67 @@ Marco disfruta ver películas, aprender cosas nuevas y explorar diferentes tecno
               <div class="example component-example">
                 <div class="example-container text-center">
                   <div id="loader"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section>
+          <div class="container">
+            <h1 class="title">Animaciones con JS</h1>
+            <div class="column s-12 content text-left">
+              <p>Usada entre diferentes para manipular propiedades entre múltiples estados.</p>
+              <p>Puede controlarse el tiempo de ejecución así como de retardo.</p>
+              <p>Control sobre la ejecución.</p>
+              <p>Recomendado para animaciones complejas.</p>
+            </div>
+          </div>
+          <div class="colum s-12 content text-left">
+            <div class="animation-controls">
+              <a href="#" id="js-demo-play" class="button common">Iniciar</a> &nbsp;
+              <a href="#" id="js-demo-reverse" class="button common">Reversa</a> &nbsp;
+              <a href="#" id="js-demo-pause" class="button warning">Pausar</a> &nbsp;
+              <a href="#" id="js-demo-restart" class="button danger">Reiniciar</a>
+              <br />
+              <br />
+              <label for="js-demo-progress">Progreso: </label>&nbsp;<input id="js-demo-progress" step="1" type="range" min="0" max="5000" value="0" />
+              <br />
+              <hr />
+              <ul class="list-unstyled">
+                <li>Estatus:&nbsp;<span id="js-demo-status-result"></span></li>
+                <li>Progreso:&nbsp;<span id="js-demo-progress-result"></span></li>
+                <li>Tiempo:&nbsp;<span id="js-demo-time-result"></span></li>
+              </ul>
+            </div>
+            <div class="js-demo">
+              <div class="character-container">
+                <div class="character character-1">
+                  <div class="head">
+                    <div class="ear left"></div>
+                    <div class="ear right"></div>
+                    <div class="face">
+                      <div class="eye left"></div>
+                      <div class="eye right"></div>
+                      <div class="mouth">
+                        <hr>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="chest"><div class="logo"></div></div>
+                </div>
+                <div class="hands">
+                  <ul class="hand left">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                  </ul>
+                  <ul class="hand right">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                  </ul>
                 </div>
               </div>
             </div>
