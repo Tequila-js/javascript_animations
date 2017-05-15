@@ -4,7 +4,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta charset="utf-8">
     <title>JavaScript Animations</title>
-    <link rel="preload" as="font" href="//fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans">
     <link rel="stylesheet" href="css/vendor.css">
     <link rel="stylesheet" href="css/main.css">
   </head>
@@ -12,25 +12,26 @@
     <main class="reveal">
       <div class="slides">
         <section>
-          <h1 class="title english">Web Animations</h1>
-          <h1 class="title spanish">Animaciones Web</h1>
+          <h1 class="title">Animaciones Web</h1>
         </section>
         <section>
-          <h1 class="title">Marco Dmz</h1>
+          <h1 class="title">Marco Domínguez</h1>
           <div class="container">
             <div class="column s-2 content profile-container">
               <img src="assets/profile1.png" class="profile" />
               <img src="assets/cool_glasses.png" class="glasses"/>
             </div>
-            <div class="column s-8 content">
-              <p>Marco es un ingeniero de Software de Aguascalientes, Ags. Actualmente laborando en EPAM, tiene más de 3 años de experiencia como desarrollador mayormente enfocado en desarrollo Front End usando tecnologías como JavaScript (ES5/ES6), CSS 3, HTML 5, jQuery, React, Angular.
+            <div class="column s-10 content">
+              <p>Marco es un ingeniero de Software de Aguascalientes, Ags. Cuenta con más de 3 años de experiencia, actualmente laborando en EPAM, esta mayormente enfocado en desarrollo Front End usando tecnologías como JavaScript (ES5/ES6), CSS 3, HTML 5, jQuery, React, Angular.
 Marco disfruta ver películas, aprender cosas nuevas y explorar diferentes tecnologías.</p>
-              <a href="//mx.linkedin.com/in/marco-antonio-dominguez-rueda-a3a974aa" target="_blank" rel="nofollow" title="go to Linkedin profile">
-                <img class="social-media" src="assets/linkedin.png" aria-hidden="true" role="presentation" />
-              </a>
-              <a href="//github.com/MDOR" target="_blank" rel="nofollow" title="go to Github profile">
-                <img class="social-media" src="assets/github.png" aria-hidden="true" role="presentation" />
-              </a>
+              <p class="text-center">
+                <a href="//mx.linkedin.com/in/marco-antonio-dominguez-rueda-a3a974aa" target="_blank" rel="nofollow" title="go to Linkedin profile">
+                  <img class="social-media" src="assets/linkedin.png" aria-hidden="true" role="presentation" />
+                </a>
+                <a href="//github.com/MDOR" target="_blank" rel="nofollow" title="go to Github profile">
+                  <img class="social-media" src="assets/github.png" aria-hidden="true" role="presentation" />
+                </a>
+              </p>
             </div>
           </div>
         </section>
@@ -43,34 +44,78 @@ Marco disfruta ver películas, aprender cosas nuevas y explorar diferentes tecno
             </div>
             <div class="column s-8 content">
               <p>Carlos Pérez es un Geek de una región cocotera, actualmente trabajando en EPAM. Ha estado jugando con diferentes tipos de tecnologías como Javascript y disfruta aprendiendo nuevos lenguajes y ver películas malas.</p>
-              <a href="//mx.linkedin.com/in/marco-antonio-dominguez-rueda-a3a974aa" target="_blank" rel="nofollow" title="go to Linkedin profile">
-                <img class="social-media" src="assets/linkedin.png" aria-hidden="true" role="presentation" />
-              </a>
-              <a href="//github.com/MDOR" target="_blank" rel="nofollow" title="go to Github profile">
-                <img class="social-media" src="assets/github.png" aria-hidden="true" role="presentation" />
-              </a>
+              <p class="text-center">
+                <a href="//mx.linkedin.com/in/marco-antonio-dominguez-rueda-a3a974aa" target="_blank" rel="nofollow" title="go to Linkedin profile">
+                  <img class="social-media" src="assets/linkedin.png" aria-hidden="true" role="presentation" />
+                </a>
+                <a href="//github.com/MDOR" target="_blank" rel="nofollow" title="go to Github profile">
+                  <img class="social-media" src="assets/github.png" aria-hidden="true" role="presentation" />
+                </a>
+              </p>
             </div>
           </div>
         </section>
         <section>
-          <h1 class="title">CSS and JavaScript animation performance</h1>
+          <h1 class="title">Animaciones</h1>
           <div class="container">
             <div class="content">
-              <div class="column s-12 content text-left">
-                <p>Animations are critical for user experience on many applications. There are many ways to implement web animations, such as &nbsp;<strong>CSS transitions/animations</strong>&nbsp; or &nbsp;<strong>JavaScript based animations</strong>.</p>
+              <div class="column s-12 content">
+                <p>Las animaciones pueden ser criticas para la experiencia del usuario.</p>
+              </div>
+              <div class="column s-12 content">
+                <p>Existen diferentes alternativas.</p>
               </div>
             </div>
           </div>
         </section>
         <section>
-          <h1 class="title">CSS Transitions</h1>
+          <h1 class="title">Transiciones con CSS</h1>
           <div class="container">
             <div class="column s-12 content text-left">
-              <p>Performed one time between two different states for one and multiple properties.</p>
-              <p>Recommended to handle small state changes.</p>
+              <p>Usada para manipular propiedades entre dos estados.</p>
+              <p>Recomendada para cambios simples.</p>
+
+              <div class="hover-demo">
+                <p>Hover</p>
+                <div class="character-container">
+                  <div class="character character-1">
+                    <div class="head">
+                      <div class="ear left"></div>
+                      <div class="ear right"></div>
+                      <div class="face">
+                        <div class="eye left"></div>
+                        <div class="eye right"></div>
+                        <div class="mouth">
+                          <hr>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="chest"><div class="logo"></div></div>
+                  </div>
+                  <div class="hands">
+                    <ul class="hand left">
+                      <li></li>
+                      <li></li>
+                      <li></li>
+                      <li></li>
+                    </ul>
+                    <ul class="hand right">
+                      <li></li>
+                      <li></li>
+                      <li></li>
+                      <li></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              
             </div>
+          <div>
+        </section>
+        <section>
+          <div class="container">
             <div class="column s-6 content">
-              <div class="example code-example">
+              <div class="example code-example left">
                 <div class="code-example-container">
                   <pre class="prettyprint lang-css">
 #button {
@@ -107,25 +152,54 @@ Marco disfruta ver películas, aprender cosas nuevas y explorar diferentes tecno
                 </div>
               </div>
             </div>
-            <div class="column s-6 content animation-container-demo character-1-container">
-              <div class="example code-example">
+            <div class="column s-6 content right">
+              <div class="example component-example">
                 <div class="example-container text-center">
                   <a href="javascript:void(0)" id="button">Button</a>
                 </div>
               </div>
-              <div class="character-container">
-                <div class="character">
-                  <div class="character1">
-                    <div class="hear"></div>
+            </div>
+          </div>
+        </section>
+        <section>
+          <h1 class="title">Animaciones con CSS</h1>
+          <div class="container">
+            <div class="column s-12 content text-left">
+              <p>Usada entre diferentes para manipular propiedades entre múltiples estados.</p>
+              <p>Puede controlarse el tiempo de ejecución así como de retardo.</p>
+              <p>Puede ejercutarse múltiples veces.</p>
+              <p>Uso de GPU.</p>
+            </div>
+            <div class="column s-12 content">
+              <div class="animation-demo">
+                <div class="character-container">
+                  <div class="character character-1">
                     <div class="head">
-                      <div class="eye"></div>
-                      <div class="mouth"><hr></div>
+                      <div class="ear left"></div>
+                      <div class="ear right"></div>
+                      <div class="face">
+                        <div class="eye left"></div>
+                        <div class="eye right"></div>
+                        <div class="mouth">
+                          <hr>
+                        </div>
+                      </div>
                     </div>
-                    <div class="chest"></div>
-                    <div class="arm">
-                      <div></div>
-                      <div></div>
-                    </div>
+                    <div class="chest"><div class="logo"></div></div>
+                  </div>
+                  <div class="hands">
+                    <ul class="hand left">
+                      <li></li>
+                      <li></li>
+                      <li></li>
+                      <li></li>
+                    </ul>
+                    <ul class="hand right">
+                      <li></li>
+                      <li></li>
+                      <li></li>
+                      <li></li>
+                    </ul>
                   </div>
                 </div>
               </div>
@@ -133,13 +207,7 @@ Marco disfruta ver películas, aprender cosas nuevas y explorar diferentes tecno
           </div>
         </section>
         <section>
-          <h1 class="title">CSS Animations</h1>
           <div class="container">
-            <div class="column s-12 content text-left">
-              <p>
-                <strong>CSS animations</strong>&nbsp; allow make animations between a set of starting property values and a final set rather than between states.
-              </p>
-            </div>
             <div class="column s-6 content">
               <div class="example code-example">
                 <div class="code-example-container">
@@ -193,36 +261,7 @@ Marco disfruta ver películas, aprender cosas nuevas y explorar diferentes tecno
                   <div id="loader"></div>
                 </div>
               </div>
-              <div class="character-container">
-                <div class="character2">
-                  <div class="head">
-                    <div class="ear left"></div>
-                    <div class="ear right"></div>
-                    <div class="face">
-                      <div class="eye left"></div>
-                      <div class="eye right"></div>
-                      <div class="mouth">
-                        <hr>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="chest"><div class="logo"></div></div>
-              </div>
-              <ul class="hands left">
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-              </ul>
-              <ul class="hands right">
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-              </ul>
             </div>
-            </div>
-
           </div>
         </section>
       </div>
