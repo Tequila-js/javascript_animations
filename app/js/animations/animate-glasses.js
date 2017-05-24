@@ -1,7 +1,6 @@
 import anime from 'animejs';
 
 import {animationDefaults} from '../defaults';
-import {getWindowWidth, generateRandom} from '../utilities';
 
 const glassesDefaults = {
   opacity: 1,
@@ -9,7 +8,7 @@ const glassesDefaults = {
   top: ['0%', '10%', '20%', '39%'],
   rotate: '4turn',
   delay: 2000
-}
+};
 
 export default function animateGlasses(elements = [], animationTime = 350) {
   if (!(elements instanceof Array) && !elements.length) {
@@ -29,4 +28,4 @@ export default function animateGlasses(elements = [], animationTime = 350) {
 
     anime(Object.assign({}, config, glassesDefaults, animationDefaults));
   });
-}; 
+}

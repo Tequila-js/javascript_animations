@@ -89,4 +89,23 @@
       color: white;
     }
   }
+  &.lang-js {
+    background: $dark-gray;
+
+    .pln {
+      color: white;
+    }
+    .kwd {
+      color: $blue;
+    }
+    .str {
+      color: $green;
+    }
+    .pun {
+      color: #5DB;
+    }
+    .typ, .lit {
+      color: $red;
+    }
+  }
 }

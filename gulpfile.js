@@ -67,6 +67,7 @@ function generateJS(done) {
 
 function minifyHTML(done) {
   gulp.src('./app/html/*.html')
+  .pipe(plumber())
   .pipe(htmlmin({collapseWhitespace: true, collapseInlineTagWhitespace: true, ignoreCustomFragments: [/<!--[\s\S]-->/]}))
   .pipe(gulp.dest('./dist'))
   .pipe(gulpIf(reload, livereload()));

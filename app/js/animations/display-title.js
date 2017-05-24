@@ -7,11 +7,11 @@ export default function displayTitle(elements = [], animationTime = 350) {
   if (!(elements instanceof Array) && !elements.length) {
     return;
   }
-  let [widthLimit, total] = [getWindowWidth(), elements.length];
+  let [widthLimit, duration] = [getWindowWidth(), 5 * animationTime];
 
   elements.forEach(function (element, i) {
     element.style.opacity = 0;
-    let duration = (i + .5) * animationTime,
+    let delay = i * 0.15 * animationTime,
       config = {
         targets: element,
         left: [
@@ -31,9 +31,10 @@ export default function displayTitle(elements = [], animationTime = 350) {
           {value: 1}
         ],
         opacity: [{value: 0}, {value: 1}],
-        duration
+        duration,
+        delay
       };
 
-      anime(Object.assign({}, config, animationDefaults));
-    });
+    anime(Object.assign({}, config, animationDefaults));
+  });
 }
