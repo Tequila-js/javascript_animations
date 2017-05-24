@@ -7,7 +7,7 @@ export default function animateSocialMedia(elements = [], animationTime = 350) {
     return;
   }
 
-  elements.forEach(e => e.style.opacity = 0 );
+  elements.forEach(e => e.style.opacity = 0);
 
   let config = {
     targets: elements,
@@ -24,4 +24,4 @@ export default function animateSocialMedia(elements = [], animationTime = 350) {
   };
 
   anime(Object.assign({}, config, animationDefaults));
-};
+}
