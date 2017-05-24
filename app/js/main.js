@@ -3,17 +3,29 @@ import reveal from 'reveal';
 
 import {revealDefaults} from './defaults';
 import {displayTitle, displayContent, animateGlasses,
-  animateSocialMedia, animateCharacter} from './animations';
+  animateSocialMedia, animateCharacter, animateDemo} from './animations';
 
 function showContent($element, current = 0) {
   let [title, content] = [$element.find('h1 span').toArray(), $element.find('.content').toArray()];
 
   displayTitle(title);
   displayContent(content);
+  console.log(current)
 
-  if ([1, 2].indexOf(current) > -1) {
-    animateGlasses($element.find('.glasses').toArray());
-    animateSocialMedia($element.find('.social-media').toArray());
+  switch (current) {
+    case 1:
+    case 2:
+      animateGlasses($element.find('.glasses').toArray());
+      animateSocialMedia($element.find('.social-media').toArray());
+      break;
+    case 9:
+      animateDemo.play();
+      break;
+    case 8:
+    case 10:
+      animateDemo.pause();
+      break;
+    default:
   }
 }
 
