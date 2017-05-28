@@ -12,7 +12,9 @@
     <main class="reveal">
       <div class="slides">
         <section>
-          <h1 class="title">Animaciones Web</h1>
+          <div class="main-title">
+            <h1 class="title">Animaciones</h1>
+          </div>
         </section>
         <section>
           <h1 class="title">Marco Domínguez</h1>
@@ -344,7 +346,6 @@ let headerAnimation = anime.timeline(Object.assign({},
     loop: true,
     easing: 'easeInOutSine'
 })),
-  rect = document.querySelectorAll('#svg rect'),
   lines = document.querySelectorAll('#svg .line'),
   figures = document.querySelectorAll('#svg .figures');
 
@@ -366,13 +367,13 @@ headerAnimation
               </div>
             </div>
             <div class="column s-6 content animation-container-demo">
-              <div class="example component-example">
+              <div class="example component-example" id="svg-demo">
                 <svg xmlns="http://www.w3.org/2000/svg" id="svg"
                     width="4.16667in" height="4.16667in"
                     viewBox="0 0 300 300">
                   <rect xmlns="http://www.w3.org/2000/svg" x="0" y="0" width="300" height="300" fill="#F7DF1E"/>
                   <path id="path-1" class="line"
-                      fill="none" stroke="white" stroke-width="1" fill-rule: nonzero
+                      fill="none" stroke="black" stroke-width="1" fill-rule: nonzero
                       stroke-dasharray="47.128875732421875" style="stroke-dashoffset: 392px;"
                       d="M 44.05,195.95
                         C 50.71,209.76 64.05,221.67 86.43,221.67
@@ -383,7 +384,7 @@ headerAnimation
                           100.24,192.62 94.05,196.43 85.00,196.43
                           75.48,196.43 71.19,189.76 65.95,181.67" />
                   <path id="path2" class="line"
-                    fill="none" stroke="white" stroke-width="1"  fill-rule: nonzero
+                    fill="none" stroke="black" stroke-width="1"  fill-rule: nonzero
                     stroke-dasharray="100" style="stroke-dashoffset: 562px;"
                     d="M 141.57,194.10
                       C 149.67,210.29 166.81,222.67 193.00,222.67
@@ -432,6 +433,14 @@ headerAnimation
                         211.10,191.71 203.95,197.43 192.05,197.43
                         178.24,197.43 170.62,190.29 164.43,180.29" />
                 </svg>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section>
+          <div class="container">
+            <div class="column s-12">
+              <div class="example component-example" id="generated-example">
               </div>
             </div>
           </div>

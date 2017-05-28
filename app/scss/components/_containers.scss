@@ -17,3 +17,11 @@
     text-align: left;
   }
 }
+
+.reveal {
+  .slides {
+    section {
+      padding: 0;
+    }
+  }
+}

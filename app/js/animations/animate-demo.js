@@ -3,11 +3,10 @@ import anime from 'animejs';
 import {animationDefaults} from '../defaults';
 
 let headerAnimation = anime.timeline(Object.assign({}, animationDefaults, {
-  direction: 'alternate',
-  loop: true,
-  easing: 'easeInOutSine'
-})),
-  rect = document.querySelectorAll('#svg rect'),
+    direction: 'alternate',
+    loop: true,
+    easing: 'easeInOutSine'
+  })),
   lines = document.querySelectorAll('#svg .line'),
   figures = document.querySelectorAll('#svg .figures');
 
@@ -22,6 +21,12 @@ headerAnimation
     targets: figures,
     fill: ['#F7DF1E', '#FFF'],
     strokeDashoffset: [anime.setDashoffset, 0],
+    duration: 3000
+  })
+  .add({
+    targets: figures,
+    stroke: ['#FFF', '#000'],
+    fill: ['#FFF', '#000'],
     duration: 3000
   });
 

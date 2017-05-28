@@ -3,7 +3,7 @@
   margin: 15px auto !important;
   box-shadow: 0px 0px 6px rgba(0,0,0,0.3);
   min-height: 200px;
-  max-height: 350px;
+  max-height: 450px;
   border-radius: $border-radius;
   padding: 29px  0 0 0 !important;
   font-size: 1rem !important;
@@ -16,6 +16,7 @@
   &:before {
     background-color: $gray;
     color: white;
+    z-index: 20;
   }
 
   &.code-example {
@@ -107,5 +108,24 @@
     .typ, .lit {
       color: $red;
     }
+  }
+}
+
+#svg-demo {
+  background: #F7DF1E;
+}
+
+#svg {
+  display: block;
+  margin: 0 auto;
+}
+
+#generated-example {
+  overflow: hidden;
+  height: 450px;
+  .animation-demo {
+    display: block;
+    height: 15px;
+    width: 15px;
   }
 }

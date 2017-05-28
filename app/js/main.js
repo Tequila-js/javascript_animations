@@ -1,7 +1,9 @@
 import $ from 'jquery';
 import reveal from 'reveal';
+import anime from 'animejs';
 
 import {revealDefaults} from './defaults';
+import {getWindowWidth, generateRandom} from './utilities';
 import {displayTitle, displayContent, animateGlasses,
   animateSocialMedia, animateCharacter, animateDemo} from './animations';
 
@@ -10,8 +12,7 @@ function showContent($element, current = 0) {
 
   displayTitle(title);
   displayContent(content);
-  console.log(current)
-
+  
   switch (current) {
     case 1:
     case 2:
@@ -79,3 +80,31 @@ function showContent($element, current = 0) {
   });
 
 }(window, document));
+
+(function generateRandomDemo() {
+  function animationGenerator (element) {
+    let width = getWindowWidth() / 10;
+    anime({
+      targets: element,
+      translateX: [...Array(Math.ceil(Math.random() * 10) + 5)].map(() => generateRandom(width)),
+      translateY: [...Array(Math.ceil(Math.random() * 10) + 5)].map(() => generateRandom(width)),
+      background: [...Array(Math.ceil(Math.random() * 10) + 5)].map(() => `#${(Math.ceil(Math.random() * 16777215)).toString(16).toUpperCase()}`),
+      direction: 'alternate',
+      loop: true,
+      easing: 'easeInOutSine',
+      elasticity: () => 300,
+      duration: Math.ceil(Math.random() * 10000)
+    });
+  }
+
+  let elements = Array(Math.ceil(Math.random() * 100) + 20).fill('<div class="animation-demo" />');
+
+  $('#generated-example').html(elements.join(''));
+
+  Array.from(document.querySelectorAll('#generated-example .animation-demo'))
+    .forEach(function (item) {
+      console.log(item);
+      animationGenerator(item);
+    });
+
+})();
