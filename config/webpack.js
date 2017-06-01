@@ -25,7 +25,8 @@ function config (env = 'development') {
   configWebpack = {
     entry: {
       main: path.join(process.cwd(), '/app/js/main.js'),
-      workshop: path.join(process.cwd(), '/app/js/workshop.js')
+      workshop: path.join(process.cwd(), '/app/js/workshop.js'),
+      ['demo-01']: path.join(process.cwd(), '/app/js/demo_01.js')
     },
     output: {
       path: path.join(process.cwd(), '/dist/js'),
