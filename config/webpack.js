@@ -2,13 +2,13 @@ import path from 'path';
 import webpack from 'webpack';
 
 function config (env = 'development') {
-  let [config, plugins] = [{}, [new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.js')]];
+  let [configWebpack, plugins] = [{}, [new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.js')]];
 
   if (env === 'production') {
     let webpackEnv, uglify;
 
     webpackEnv = new webpack.DefinePlugin({
-      'process.env': { NODE_ENV: JSON.stringify('production')}
+      'process.env': {NODE_ENV: JSON.stringify('production')}
     });
 
     uglify = new webpack.optimize.UglifyJsPlugin({
@@ -22,11 +22,14 @@ function config (env = 'development') {
     plugins.push(webpackEnv, uglify);
   }
 
-  config = {
-    entry: path.join(process.cwd(), '/app/js/main.js'),
+  configWebpack = {
+    entry: {
+      main: path.join(process.cwd(), '/app/js/main.js'),
+      workshop: path.join(process.cwd(), '/app/js/workshop.js')
+    },
     output: {
       path: path.join(process.cwd(), '/dist/js'),
-      filename: '[name].js',
+      filename: '[name].js'
     },
     devtool: env === 'production' ? 'cheap-source-map' : 'source-map',
     plugins,
@@ -52,7 +55,7 @@ function config (env = 'development') {
     }
   };
 
-  return config;
+  return configWebpack;
 }
 
 export default config;
