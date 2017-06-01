@@ -31,29 +31,30 @@ Puedes también visualizar el proyecto una ves que ejecutes ```npm run build:dev
 
 ## Estructura
 ```
-app/
-  |__assets/ (imagenes usadas en la presentación)
-  |__html/ (páginas con el contenido)
-  |__js/
-  |   |__animations/ (scripts relacionados a las animaciones usadas en la página)
-  |   |__defaults/ (valores por detecto usandos en animaciones así como en la presentación)
-  |   |__utilities/ (funciones que pueden ser re usadas para generar el contenido de la presentación)
-  |   |__ main.js (código principal)
-  |
-  |__scss/
-  |   |__characters/ (código relacionado con personajes usados en la presentación)
-  |   |__components/ (código de los componentes usandos en la presentación)
-  |   |__general/ (código de proposito general de la presentaci)
-  |   |__settings/ (contiene todos los valores por defecto de la aplicación)
-  |   |__main.scss (importa todas los archivos, es el archivo principal con el que se generá código de CSS)
-
-config/ (cóntiene la configuración con la cual generaremos código de JavaScript)
-dist/ (carpeta auto generada que contiene el contenido de la presentación)
-node_modules/ (carpeta auto generada, contiene los diferentes modulos de la aplicación)
-scripts/ (contiene diferentes scripts usados para generar carpetas criticas dentro de la aplicación)
-.eslint (conjunto de reglas que cuidan el uso de estandarés de codificación)
-gulpfile.js (conjunto de tareas usadas para generar contenido)
-package.json (contiene la descripción del proyecto así como las diferentes dependecias y scripts usados en la aplicación)
+/
+|__app/
+|    |__assets/ (archivos usadas en la presentación)
+|    |__html/ (contenido)
+|    |__js/
+|    |   |__animations/ (scripts con animaciones)
+|    |   |__defaults/ (valores por detecto usandos usados en scripts)
+|    |   |__utilities/ (funciones usadas en varios scripts)
+|    |   |__ main.js (código principal)
+|    |
+|    |__scss/
+|       |__characters/ (código para personajes)
+|       |__components/ (código de los componentes)
+|       |__general/ (código de proposito general)
+|       |__settings/ (valores por defecto)
+|       |__main.scss (archivo principal con el que se generá código de CSS)
+|
+|__config/ (configuración para generar JavaScript)
+|__dist/ (carpeta auto generada, contiene contenido de la presentación)
+|__node_modules/ (carpeta auto generada, contiene los diferentes modulos de la aplicación)
+|__scripts/ (scripts usados para generar carpetas criticas dentro de la aplicación)
+|__.eslint (reglas que refuerzan el uso de estandares de codificación)
+|__gulpfile.js (conjunto de tareas usadas para generar contenido)
+|__package.json (descripción del proyecto, dependecias y scripts para generación de contenido)
 ```
 
 ## Acerca de las tecnologias
