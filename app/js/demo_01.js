@@ -49,8 +49,8 @@ class Dot {
   }
 
   moveDot() {
-    this.x = this.x + (Math.random() > 0.5 ? -Math.random() * 5 : Math.random() * 5);
-    this.y = this.y + (Math.random() > 0.5 ? -Math.random() * 5 : Math.random() * 5);
+    this.x = this.x + (Math.random() > 0.5 ? -5 : 5);
+    this.y = this.y + (Math.random() > 0.5 ? -5 : 5);
   }
 
   draw(context) {
@@ -69,7 +69,7 @@ class Dot {
   let canvas = document.querySelector('canvas'),
     context = canvas.getContext('2d'),
     [maxWidth, maxHeight, timerHandler, tolerance] = [0, 0, null, (Math.random() * 100) + 50],
-    dots = [...Array(Math.ceil(Math.random() * 300) + 300)];
+    dots = [...Array(Math.ceil(Math.random() * 500) + 300)];
 
   context.lineWidth = 1;
 
@@ -78,15 +78,24 @@ class Dot {
   [canvas.width, canvas.height] = [maxWidth, maxHeight];
   dots = dots.map(() => new Dot({maxWidth, maxHeight}));
 
+
+  function changeBackground() {
+    document.body.style.background = Math.random() > 0.5 ? 'black' : 'white';
+
+    setTimeout(changeBackground, 2000);
+  }
+
   function animateDemo() {
     context.clearRect(0, 0, canvas.width, canvas.height);
     dots.forEach(item => (item.moveDot(), item.draw(context)));
     drawLinesBewteenDots(context, dots, tolerance);
+    //changeBackground()
 
     requestAnimationFrame(animateDemo);
   }
 
   requestAnimationFrame(animateDemo);
+  requestAnimationFrame(changeBackground);
 
   window.addEventListener('resize', () => {
     clearTimeout(timerHandler);
