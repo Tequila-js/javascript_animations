@@ -26,7 +26,8 @@ function config (env = 'development') {
     entry: {
       main: path.join(process.cwd(), '/app/js/main.js'),
       workshop: path.join(process.cwd(), '/app/js/workshop.js'),
-      ['demo-01']: path.join(process.cwd(), '/app/js/demo_01.js')
+      ['demo-01']: path.join(process.cwd(), '/app/js/demo_01.js'),
+      ['demo-02']: path.join(process.cwd(), '/app/js/demo-02.js')
     },
     output: {
       path: path.join(process.cwd(), '/dist/js'),
