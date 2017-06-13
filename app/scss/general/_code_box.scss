@@ -1,0 +1,131 @@
+.example {
+  width: 90%;
+  margin: 15px auto !important;
+  box-shadow: 0px 0px 6px rgba(0,0,0,0.3);
+  min-height: 200px;
+  max-height: 450px;
+  border-radius: $border-radius;
+  padding: 29px  0 0 0 !important;
+  font-size: 1rem !important;
+  font-family: 'Open Sans', sans-serif !important;
+  position: relative;
+  border: 1px solid $gray !important;
+  line-height: 1.2em !important;
+  overflow-y: hidden !important;
+  background: white;
+  &:before {
+    background-color: $gray;
+    color: white;
+    z-index: 20;
+  }
+
+  &.code-example {
+    &:before {
+      content: 'Código';
+    }
+  }
+  &.component-example {
+    &:before {
+      content: 'Componente';
+    }
+  }
+
+  &.code-example,
+  &.component-example {
+    &:before {
+      position: absolute;
+      padding: 5px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      box-sizing: border-box;
+    }
+  }
+
+  &.left {
+    margin-left: 0 !important;
+  }
+
+  &.right {
+    margin-right: 0 !important;
+  }
+}
+
+.code-example-container {
+  overflow-y: auto;
+  max-height: 320px;
+}
+.example-container {
+  position: absolute;
+  padding-top: $gutter * 3 !important;
+  max-width: 200px;
+  max-height: 100px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto !important;
+  background: white;
+}
+
+.prettyprint {
+  margin: 0 !important;
+  padding: $gutter !important;
+  width: 100% !important;
+  border: none !important;
+  box-shadow: none !important;
+  font-size: 1rem !important;
+  &.lang-css {
+    background: $dark-gray;
+    .com {
+      color: $blue;
+    }
+    .lit {
+      color: $green;
+    }
+    .pln, .kwd {
+      color: white;
+    }
+    .pun {
+      color: white;
+    }
+  }
+  &.lang-js {
+    background: $dark-gray;
+
+    .pln {
+      color: white;
+    }
+    .kwd {
+      color: $blue;
+    }
+    .str {
+      color: $green;
+    }
+    .pun {
+      color: #5DB;
+    }
+    .typ, .lit {
+      color: $red;
+    }
+  }
+}
+
+#svg-demo {
+  background: #F7DF1E;
+}
+
+#svg {
+  display: block;
+  margin: 0 auto;
+}
+
+#generated-example {
+  overflow: hidden;
+  height: 450px;
+  .animation-demo {
+    display: block;
+    height: 15px;
+    width: 15px;
+  }
+}

@@ -1,0 +1,3 @@
+@function calculaWidthPercentage($i, $column-number) {
+  @return percentage($i/$column-number);
+}

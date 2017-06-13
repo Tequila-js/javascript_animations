@@ -1,0 +1,30 @@
+.common-link {
+  position: relative !important;
+  color: white;
+  text-decoration: none;
+  transition: $transition-time color ease;
+  text-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    height: 2px;
+    width: 0;
+    background-color: $dark-green;
+    transition: $transition-time width ease;
+  }
+  &:before {
+    left: 0;
+  }
+  &:after {
+    right: 0;
+  }
+  &:hover {
+    text-shadow: 0 0 10px rgba(0, 0, 0, .5);
+    &:after,
+    &:before {
+      width: 100%;
+    }
+  }
+}

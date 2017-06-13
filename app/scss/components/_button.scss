@@ -1,0 +1,38 @@
+.button {
+  display: inline-block;
+  border-radius: 6px;
+  padding: 5px 6px !important;
+  text-decoration: none;
+  transition: $transition-time background ease, $transition-time color ease;
+
+  &.common {
+    background-color: $green;
+    color: white;
+
+    &:hover,
+    &:active {
+      background-color: $dark-green;
+    }
+  }
+
+  &.warning {
+    background-color: $yellow;
+    color: white;
+
+    &:hover,
+    &:active {
+      background-color: $dark-yellow;
+    }
+  }
+
+  &.danger {
+    background-color: $red;
+    color: white;
+
+    &:hover,
+    &:active {
+      background-color: $dark-red;
+    }
+  }
+}
+

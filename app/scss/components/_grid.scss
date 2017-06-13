@@ -1,0 +1,17 @@
+.container {
+  margin: 0 auto !important;
+  &:after,
+  &:before {
+    content: '';
+    clear: both;
+    display: table;
+  }
+}
+
+.column {
+  float: left;
+  padding: $gutter;
+  box-sizing: border-box;
+}
+
+@include createGrid();

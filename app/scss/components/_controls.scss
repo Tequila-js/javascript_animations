@@ -1,0 +1,28 @@
+.controls {
+  div {
+    opacity: 0 !important;
+    border-width: 20px !important;
+    cursor: pointer;
+    transition: $transition-time * 3 border-color ease, $transition-time * 3 opacity ease !important;
+    &:not(.enabled) {
+      display: none;
+    }
+    &.enabled {
+      opacity: 1 !important;
+    }
+  }
+  .navigate-left {
+    border-right-color: white !important;
+    &:hover,
+    &:active {
+      border-right-color: $gray !important;
+    }
+  }
+  .navigate-right {
+    border-left-color: white !important;
+    &:hover,
+    &:active {
+      border-left-color: $gray !important;
+    }
+  }
+} 

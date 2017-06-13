@@ -1,0 +1,28 @@
+::-webkit-scrollbar {
+  background: rgba(0, 0, 0, .1);
+  width: 15px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, .1);
+  box-shadow: inset 0 0 15px rgba(0, 0, 0, .5);
+  opacity: .5;
+}
+
+::-webkit-scrollbar-thumb {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .1);
+  background-color: black;
+  opacity: .2;
+}
+
+body, div, section,
+article, select {
+  scrollbar-base-color:  rgba(0, 0, 0, .5);
+  scrollbar-3dlight-color:  rgba(0, 0, 0, .5);
+  scrollbar-highlight-color: rgba(0, 0, 0, .5);
+  scrollbar-track-color:  rgba(0, 0, 0, .5);
+  scrollbar-arrow-color: black;
+  scrollbar-face-color: black;
+  scrollbar-shadow-color: rgba(0, 0, 0, .5);
+  scrollbar-dark-shadow-color: rgba(0, 0, 0, .5);
+}
