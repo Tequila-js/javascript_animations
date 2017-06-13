@@ -1,6 +1,6 @@
 {
   "name": "javascript_animations",
-  "version": "0.0.1",
+  "version": "0.8",
   "description": "Explore multiple animations and its differences, in this case we will be focus on JavaScript approach",
   "main": "index.js",
   "engines": {
@@ -8,12 +8,14 @@
     "npm": "3.8.x"
   },
   "scripts": {
-    "scaffolding": "npm run test-structure && npm run move-assets",
+    "scaffolding": "npm run test-structure && npm run move-assets:dev",
+    "scaffolding:prod": "npm run test-structure && npm run move-assets:prod",
     "test-structure": "babel-node --presets es2015 scripts/test-folders",
-    "move-assets": "babel-node --presets es2015 scripts/move-assets",
+    "move-assets:dve": "babel-node --presets es2015 scripts/move-assets",
+    "move-assets:prod": "babel-node --presets es2015 scripts/move-assets --env=production",
     "watch": "npm run build:dev && babel-node --presets es2015 ./node_modules/gulp/bin/gulp.js watch --reload=true",
     "build:dev": "npm run scaffolding && babel-node --presets es2015 ./node_modules/gulp/bin/gulp.js build --env=development",
-    "build:prod": "npm run scaffolding && babel-node --presets es2015 ./node_modules/gulp/bin/gulp.js build --env=production",
+    "build:prod": "npm run scaffolding:prod && babel-node --presets es2015 ./node_modules/gulp/bin/gulp.js build --env=production",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

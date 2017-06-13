@@ -7,7 +7,7 @@ let colors = {
   reset: '\x1b[0m'
 };
 
-['dist/js', 'dist/css', 'dist/assets'].forEach(function checkIfCriticalRouteExist(item) {
+['docs/js', 'docs/css', 'docs/assets', 'dist/js', 'dist/css', 'dist/assets'].forEach(function checkIfCriticalRouteExist(item) {
   let [routeFolders, route] = [item.split('/'), process.cwd()];
 
   routeFolders.forEach(function generateFolder(folder) {

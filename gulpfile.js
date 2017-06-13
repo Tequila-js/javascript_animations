@@ -17,6 +17,7 @@ import config from './config/webpack';
 
 const [reload, env] = [argv.reload === 'true', argv.env === 'production' ? 'production' : 'development'],
   jsConfig = config(env),
+  rootFolder = env === 'development' ? 'dist' : 'docs',
   colors = {
     green: '\x1b[32m',
     blue: '\x1b[34m',
@@ -30,7 +31,7 @@ function generateCSSVendor(done) {
   gulp.src(['./node_modules/reveal/index.css'])
     .pipe(concat('vendor.css'))
     .pipe(gulpIf(env === 'production', minifycss()))
-    .pipe(gulp.dest('./dist/css'));
+    .pipe(gulp.dest(`./${rootFolder}/css`));
 
   done();
 }
@@ -49,7 +50,7 @@ function generateCSS(done) {
     }))
     .pipe(gulpIf(env === 'development', sourcemaps.write('.')))
     .pipe(gulpIf(env !== 'development', minifycss()))
-    .pipe(gulp.dest('./dist/css'))
+    .pipe(gulp.dest(`./${rootFolder}/css`))
     .pipe(gulpIf(reload, livereload()));
 
   done();
@@ -59,7 +60,7 @@ function generateJS(done) {
   gulp.src('./app/js/*.js')
     .pipe(plumber())
     .pipe(webpack(jsConfig))
-    .pipe(gulp.dest('./dist/js'))
+    .pipe(gulp.dest(`./${rootFolder}/js`))
     .pipe(gulpIf(reload, livereload()));
 
   done();
@@ -69,7 +70,7 @@ function minifyHTML(done) {
   gulp.src('./app/html/*.html')
   .pipe(plumber())
   .pipe(htmlmin({collapseWhitespace: true, collapseInlineTagWhitespace: true, ignoreCustomFragments: [/<!--[\s\S]-->/]}))
-  .pipe(gulp.dest('./dist'))
+  .pipe(gulp.dest(`./${rootFolder}`))
   .pipe(gulpIf(reload, livereload()));
 
   done();
