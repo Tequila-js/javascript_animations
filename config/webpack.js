@@ -30,7 +30,7 @@ function config (env = 'development') {
       ['demo-02']: path.join(process.cwd(), '/app/js/demo-02.js')
     },
     output: {
-      path: path.join(process.cwd(), '/dist/js'),
+      path: path.join(process.cwd(), env === 'development' ? '/dist/js' : '/docs/js'),
       filename: '[name].js'
     },
     devtool: env === 'production' ? 'cheap-source-map' : 'source-map',

@@ -1,5 +1,10 @@
 import fs from 'fs';
 import path from 'path';
+import {argv} from 'yargs';
+
+const folder = argv.env === 'production' ? 'docs' : 'dist';
+
+console.log(argv.env)
 
 let route = process.cwd(),
   colors = {
@@ -10,7 +15,7 @@ let route = process.cwd(),
 
 fs.readdir(path.resolve(`${route}/app/assets`), (err, files) => {
   files.forEach(file => {
-    let [oldPath, newPath] = [path.join(`${route}/app/assets/${file}`), path.join(`${route}/dist/assets/${file}`)];
+    let [oldPath, newPath] = [path.join(`${route}/app/assets/${file}`), path.join(`${route}/${folder}/assets/${file}`)];
     if (!fs.existsSync(newPath)) {
       fs.writeFileSync(newPath, fs.readFileSync(oldPath));
       console.log(`${colors.green}%s${colors.reset}`, `Copied: ${newPath}`);
