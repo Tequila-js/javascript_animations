@@ -1,6 +1,6 @@
 {
   "name": "javascript_animations",
-  "version": "0.8",
+  "version": "0.8.0",
   "description": "Explore multiple animations and its differences, in this case we will be focus on JavaScript approach",
   "main": "index.js",
   "engines": {
@@ -11,7 +11,7 @@
     "scaffolding": "npm run test-structure && npm run move-assets:dev",
     "scaffolding:prod": "npm run test-structure && npm run move-assets:prod",
     "test-structure": "babel-node --presets es2015 scripts/test-folders",
-    "move-assets:dve": "babel-node --presets es2015 scripts/move-assets",
+    "move-assets:dev": "babel-node --presets es2015 scripts/move-assets",
     "move-assets:prod": "babel-node --presets es2015 scripts/move-assets --env=production",
     "watch": "npm run build:dev && babel-node --presets es2015 ./node_modules/gulp/bin/gulp.js watch --reload=true",
     "build:dev": "npm run scaffolding && babel-node --presets es2015 ./node_modules/gulp/bin/gulp.js build --env=development",
