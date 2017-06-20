@@ -64,7 +64,7 @@
     "gulp-sourcemaps": "^2.6.0",
     "jquery": "^3.2.1",
     "reveal": "0.0.4",
-    "webpack": "^2.6.1",
+    "webpack": "1.15.0",
     "yargs": "^8.0.1"
   }
 }
