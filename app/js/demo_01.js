@@ -27,6 +27,7 @@ function drawLinesBewteenDots(context, dotsArray, toleranceRange) {
 
       context.beginPath();
       context.strokeStyle = returnRandomColor();
+      context.lineWidth = 0.35;
       context.moveTo(coorsI.x, coorsI.y);
       context.lineTo(coorsO.x, coorsO.y);
       context.stroke();
@@ -60,7 +61,7 @@ class Dot {
 
     context.beginPath();
     context.fillStyle = returnRandomColor();
-    context.arc(this.x, this.y, 0.25, 0, Math.PI * 1);
+    context.arc(this.x, this.y, 0.5, 0, Math.PI * 2);
     context.fill();
   }
 }
@@ -69,7 +70,7 @@ class Dot {
   let canvas = document.querySelector('canvas'),
     context = canvas.getContext('2d'),
     [maxWidth, maxHeight, timerHandler, tolerance] = [0, 0, null, (Math.random() * 100) + 50],
-    dots = [...Array(Math.ceil(Math.random() * 500) + 300)];
+    dots = [...Array(Math.ceil(Math.random() * 400) + 400)];
 
   context.lineWidth = 1;
 
@@ -78,15 +79,9 @@ class Dot {
   [canvas.width, canvas.height] = [maxWidth, maxHeight];
   dots = dots.map(() => new Dot({maxWidth, maxHeight}));
 
-
-  function changeBackground() {
-    document.body.style.background = Math.random() > 0.5 ? 'black' : 'white';
-
-    setTimeout(changeBackground, 2000);
-  }
-
   function animateDemo() {
-    context.clearRect(0, 0, canvas.width, canvas.height);
+    context.fillStyle = 'rgb(0, 0, 0)';
+    context.fillRect(0, 0, canvas.width, canvas.height);
     dots.forEach(item => (item.moveDot(), item.draw(context)));
     drawLinesBewteenDots(context, dots, tolerance);
 
@@ -94,7 +89,6 @@ class Dot {
   }
 
   requestAnimationFrame(animateDemo);
-  requestAnimationFrame(changeBackground);
 
   window.addEventListener('resize', () => {
     clearTimeout(timerHandler);
