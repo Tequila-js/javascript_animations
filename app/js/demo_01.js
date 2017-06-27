@@ -89,7 +89,6 @@ class Dot {
     context.clearRect(0, 0, canvas.width, canvas.height);
     dots.forEach(item => (item.moveDot(), item.draw(context)));
     drawLinesBewteenDots(context, dots, tolerance);
-    //changeBackground()
 
     requestAnimationFrame(animateDemo);
   }
@@ -105,5 +104,5 @@ class Dot {
     }, 60);
   });
 
-  console.log('%cNumero de puntos%c: ' + dots.length, 'color: red; font-weight: bold;', 'color: blue; font-weight: normal;')
+  console.log('%cNumero de puntos%c: ' + dots.length, 'color: red; font-weight: bold;', 'color: blue; font-weight: normal;');
 }());

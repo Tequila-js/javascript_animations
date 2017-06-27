@@ -5,11 +5,12 @@ window.cancelAnimationFrame = window.cancelAnimationFrame || window.mozCancelAni
 
 class Drop {
   constructor(x = 0, y = 0) {
-    [this.x, this.y, this.speed, this.width, this.height, this.shouldFall] =[x, y, Math.random() * 10 + 1, Math.random() * .5 + 1, Math.random() * 50 + 30, Math.random() * 10 > 5];
+    [this.x, this.y] = [x, y];
+    [this.speed, this.width, this.height, this.shouldFall] = [Math.random() * 10 + 1, Math.random() * 0.5 + 1, Math.random() * 50 + 30, Math.random() * 10 > 5];
   }
 
   getValues() {
-    let [x, y, speed, width, height, shouldFall] = [this.x, this.y, this.speed, this.width, this.height, this.shouldFall];
+    let [x, y, speed, width, height] = [this.x, this.y, this.speed, this.width, this.height];
     return ({x, y, width, height, speed});
   }
 
@@ -22,8 +23,8 @@ class RainyCanvas {
   constructor(canvas) {
     [this.limit, this.current] = [255, 0];
     this.decreasing = true;
-    this.drops = [... Array(parseInt(Math.random() * 1000 + 30))];
-    this.drops = this.drops.map(item => new Drop(Math.random() * canvas.width, Math.random() * canvas.height));
+    this.drops = [... Array(parseInt(Math.random() * 1000 + 30, 10))];
+    this.drops = this.drops.map(() => new Drop(Math.random() * canvas.width, Math.random() * canvas.height));
   }
 
   drawInCanvas(canvas, ctx) {
@@ -31,14 +32,14 @@ class RainyCanvas {
 
     this.drops.forEach(item => {
       let [values, newVal] = [item.getValues(), 0],
-        lineColor = `rgb(${parseInt(Math.random() * 255)}, ${parseInt(Math.random() * 255)}, ${parseInt(Math.random() * 255)})`;
+        lineColor = `rgb(${parseInt(Math.random() * 255, 10)}, ${parseInt(Math.random() * 255, 10)}, ${parseInt(Math.random() * 255, 10)})`;
 
-      ctx.lineWidth = .5;
+      ctx.lineWidth = 0.5;
       ctx.fillStyle = lineColor;
       ctx.fillRect(values.x, values.y, values.width, values.height);
 
       if (item.shouldFall) {
-        newVal = values.y + values.speed > canvas.height ? 0 : values.y + values.speed
+        newVal = values.y + values.speed > canvas.height ? 0 : values.y + values.speed;
       } else {
         newVal = values.y - values.speed <= 0 ? canvas.height : values.y - values.speed;
       }
@@ -50,8 +51,7 @@ class RainyCanvas {
 
 (function () {
   let canvas = document.querySelector('canvas'),
-		ctx = canvas.getContext("2d"),
-    canvasHandler = null;
+    [ctx, canvasHandler] = [canvas.getContext('2d'), null];
 
   canvas.width = window.innerWidth || document.clientWidth || document.documentElement.clientWidth;
   canvas.height = window.innerHeight || document.clientHeight || document.documentElement.clientHeight;
@@ -60,8 +60,8 @@ class RainyCanvas {
 
   function draw() {
     canvasHandler.drawInCanvas(canvas, ctx);
-    requestAnimationFrame(draw)
+    requestAnimationFrame(draw);
   }
 
   draw();
-})();
+}());
