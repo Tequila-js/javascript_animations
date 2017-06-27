@@ -80,12 +80,21 @@ section, div, p {
   width: 45%;
 }
 
+.carlos-perez-container {
+  .glasses {
+    top: 25% !important;
+    left: 16% !important;
+    width: 35%;
+    transform: rotate(-15deg) !important;
+  }
+}
+
 /* Examples*/
 #button {
   border-radius: 5px;
   display: inline-block;
-  font-size: 10px;
-  padding: 7px 15px !important;
+  font-size: 30px;
+  padding: 20px !important;
   position: relative;
   background-color: transparent !important;
   border: 1px solid #39c2d7 !important;
