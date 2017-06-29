@@ -4,8 +4,6 @@ import {argv} from 'yargs';
 
 const folder = argv.env === 'production' ? 'docs' : 'dist';
 
-console.log(argv.env)
-
 let route = process.cwd(),
   colors = {
     green: '\x1b[32m',
