@@ -12,7 +12,7 @@ function showContent($element, current = 0) {
 
   displayTitle(title);
   displayContent(content);
-  
+
   switch (current) {
     case 1:
     case 2:
@@ -102,9 +102,6 @@ function showContent($element, current = 0) {
   $('#generated-example').html(elements.join(''));
 
   Array.from(document.querySelectorAll('#generated-example .animation-demo'))
-    .forEach(function (item) {
-      console.log(item);
-      animationGenerator(item);
-    });
+    .forEach(item => animationGenerator(item));
 
 })();
