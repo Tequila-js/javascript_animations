@@ -1,6 +1,6 @@
 # Animaciones
 
-Exploraremos las diferentes tipos de animaciones, explicando beneficios así como las limitaciones de cada una de ellas.
+Exploraremos las diferentes alternativas para animar contenido, explicando beneficios así y limitaciones de cada una de ellas.
 
 ## Requerimientos
 - [Node 6.10.3](https://nodejs.org/es/)
@@ -8,7 +8,7 @@ Exploraremos las diferentes tipos de animaciones, explicando beneficios así com
 - [Chrome](https://www.google.com.mx/chrome/browser/desktop/)
 
 ### Sugeridos
-- [SourceTree](https://es.atlassian.com/software/sourcetree) (Una interface para interactuar con GIT)
+- [SourceTree](https://es.atlassian.com/software/sourcetree) (Interface para interactuar con GIT)
 - [cmder](http://cmder.net/) (Emulador de consola)
 - [livereload](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei) (Extensión de Chrome usada para integrar livereload en nuestra aplicación, la cual permitirá refrescar el navegador cuando se realice algún cambio en ciertos archivos)
 
@@ -20,12 +20,12 @@ Exploraremos las diferentes tipos de animaciones, explicando beneficios así com
 - Escribir en la consola ```npm run watch```
 
 Nota:
-Puedes también visualizar el proyecto una ves que ejecutes ```npm run build:dev``` y entres abras `/dist/index.html`
+Puedes también visualizar el proyecto una vez que ejecutes ```npm run build:dev``` y abrir `/dist/index.html`
 
 ## Comandos
 |Comando|Acción|
 |-------|------|
-|`npm run watch`|Crea un servidor el cual permitirá visualizar nuestro proyecto|
+|`npm run watch`|Creará un servidor el cual permitirá visualizar nuestro proyecto|
 |`npm run build:dev`|Procesará nuestros archivos para un ambiente de desarrollo|
 |`npm run build:prod`|Procesará nuestros archivos para un ambiente de producción|
 
@@ -70,3 +70,5 @@ Puedes también visualizar el proyecto una ves que ejecutes ```npm run build:dev
 - [Webpack](https://webpack.github.io/)
   - [Getting Started](https://scotch.io/tutorials/getting-started-with-webpack-module-bundling-magic)
 - [anime-js](http://anime-js.com/)
+- [JavaScript](https://github.com/MDOR/Useful-Resources/blob/master/javascript/javascript.md)
+  

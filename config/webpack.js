@@ -27,7 +27,8 @@ function config (env = 'development') {
       main: path.join(process.cwd(), '/app/js/main.js'),
       workshop: path.join(process.cwd(), '/app/js/workshop.js'),
       ['demo-01']: path.join(process.cwd(), '/app/js/demo_01.js'),
-      ['demo-02']: path.join(process.cwd(), '/app/js/demo-02.js')
+      ['demo-02']: path.join(process.cwd(), '/app/js/demo-02.js'),
+      ['demo-03']: path.join(process.cwd(), '/app/js/demo_03.js')
     },
     output: {
       path: path.join(process.cwd(), env === 'development' ? '/dist/js' : '/docs/js'),
