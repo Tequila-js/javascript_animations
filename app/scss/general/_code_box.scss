@@ -3,7 +3,7 @@
   margin: 15px auto !important;
   box-shadow: 0px 0px 6px rgba(0,0,0,0.3);
   min-height: 200px;
-  max-height: 450px;
+  max-height: 550px;
   border-radius: $border-radius;
   padding: 29px  0 0 0 !important;
   font-size: 1rem !important;
@@ -53,7 +53,7 @@
 
 .code-example-container {
   overflow-y: auto;
-  max-height: 320px;
+  max-height: 550px;
 }
 .example-container {
   position: absolute;
@@ -70,13 +70,14 @@
 
 .prettyprint {
   margin: 0 !important;
+  max-height: 500px;
   padding: $gutter !important;
   width: 100% !important;
   border: none !important;
   box-shadow: none !important;
   font-size: 1rem !important;
   &.lang-css {
-    background: $dark-gray;
+    background: white;
     .com {
       color: $blue;
     }
@@ -84,17 +85,17 @@
       color: $green;
     }
     .pln, .kwd {
-      color: white;
+      color: $dark-gray;
     }
     .pun {
-      color: white;
+      color: $dark-gray;
     }
   }
   &.lang-js {
-    background: $dark-gray;
+    background: white;
 
     .pln {
-      color: white;
+      color: $dark-gray;
     }
     .kwd {
       color: $blue;
